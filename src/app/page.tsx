@@ -116,9 +116,6 @@ export default function ProductLaunchPage() {
               student success.
             </p>
           </div>
-          <p className="mb-10 animate-fade-up animation-delay-500 opacity-0">
-            <i>Launching 3rd November</i>
-          </p>
           <div className="animate-fade-up animation-delay-600 opacity-0">
             <a
               href="https://forms.gle/uunftAqJqn2ZFQzFA"
