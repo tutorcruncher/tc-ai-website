@@ -4,7 +4,7 @@
   /* ============================================
     FONTS
     ============================================ */
-  --font-heading: "halyard-display", -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
+  --font-heading: "Sentient", Georgia, "Times New Roman", serif;
 
   /* ============================================
     COLOURS
@@ -20,7 +20,7 @@
   /* ============================================
     BACKGROUNDS
     ============================================ */
-  --background-color-primary: #362E83;
+  --background-color-primary: #94f27f;
   --background-color-page: #eff5ff;
   --background-color-content: #f9fafc;
   --background-color-hover: #F1F5F9;
