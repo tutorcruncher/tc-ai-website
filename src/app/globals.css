@@ -1,6 +1,77 @@
 @import "tailwindcss";
 
 @theme {
+  /* ============================================
+    FONTS
+    ============================================ */
+  --font-heading: "halyard-display", -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
+
+  /* ============================================
+    COLOURS
+    ============================================ */
+  /* --color-*: initial; */
+
+  --color-white: #FFFFFF;
+  --color-link: #3B82F6;
+  --color-primary: #1F374E;
+  --color-muted: #9CA3AF;
+  --color-muted-dark: #6B7280;
+
+  /* ============================================
+    BACKGROUNDS
+    ============================================ */
+  --background-color-primary: #362E83;
+  --background-color-page: #eff5ff;
+  --background-color-content: #f9fafc;
+  --background-color-hover: #F1F5F9;
+  --background-color-overlay: rgba(000, 000, 000, 0.4);
+  --background-color-overlay-light: rgba(255, 255, 255, 0.75);
+
+  /* ============================================
+    BORDERS
+    ============================================ */
+   --border-color-default: #E5E7EB;
+
+  /* ============================================
+     ALERTS & NOTIFICATIONS
+     ============================================ */
+  --background-color-success: #ecfdf5;
+  --border-color-success: #004e3a;
+  --text-color-success: #004e3a;
+
+  --background-color-error: #ffefef;
+  --border-color-error: #860909;
+  --text-color-error: #860909;
+
+  --background-color-warning: #fff7ed;
+  --border-color-warning: #422006;
+  --text-color-warning: #422006;
+
+  --background-color-info: #eff5ff;
+  --border-color-info: #3B82F6;
+  --text-color-info: #1E40AF;
+
+  /* ============================================
+  INPUTS
+  ============================================ */
+  --color-placeholder: #94A3B8;
+}
+
+@layer base {
+  *, ::before, ::after {
+    @apply border-default;
+  }
+
+  a{
+    @apply text-link
+  }
+}
+
+@source inline("tw:col-span-{1,2,3,4,5,6,7,8,9,10,11,12}");
+@source inline("tw:col-span-full");
+@source inline("tw:{lg,md,sm,xl,2xl}:col-span-{1,2,3,4,5,6,7,8,9,10,11,12}");
+
+@theme {
   --animate-fade-up: fade-up 0.6s ease-in-out forwards;
 
   @keyframes fade-up {
