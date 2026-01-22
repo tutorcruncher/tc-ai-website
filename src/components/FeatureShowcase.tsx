@@ -449,11 +449,26 @@ const FEATURES: Feature[] = [
 
 export function FeatureShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const isScrollingToFeature = useRef(false);
 
+  // Check if we're on desktop (lg breakpoint = 1024px)
   useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
+
+  useEffect(() => {
+    // Only enable scroll-based feature switching on desktop
+    if (!isDesktop) return;
+
     const handleScroll = () => {
       // Don't update active index during programmatic scrolls (like anchor clicks)
       if (isScrollingToFeature.current) return;
@@ -515,15 +530,15 @@ export function FeatureShowcase() {
       window.removeEventListener("hashchange", handleHashChange);
       document.removeEventListener("click", handleClick);
     };
-  }, [activeIndex]);
+  }, [activeIndex, isDesktop]);
 
   return (
     <section id="features" className="px-4 scroll-mt-16">
-      {/* Container with extra height for scroll-through */}
+      {/* Container with extra height for scroll-through (desktop only) */}
       <div
         ref={containerRef}
         className="relative"
-        style={{ height: `${100 + (FEATURES.length - 1) * 50}vh` }}
+        style={isDesktop ? { height: `${100 + (FEATURES.length - 1) * 50}vh` } : undefined}
       >
         {/* Sticky content - full viewport height, centered */}
         <div

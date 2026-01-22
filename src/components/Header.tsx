@@ -3,7 +3,7 @@ import { Logo } from "./Logo";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-default bg-white/20 backdrop-blur-md">
+    <header className="px-4 sticky top-0 z-50 w-full border-b border-default bg-white/20 backdrop-blur-md">
       <div className="mx-auto max-w-7xl">
         <div className="flex h-16 items-center justify-between">
           <a href="/" className="flex items-center">

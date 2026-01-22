@@ -17,10 +17,29 @@ const GRID_ITEMS = [
 
 export function WhyChoose() {
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
+  const [isDesktop, setIsDesktop] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
 
+  // Check if we're on desktop (lg breakpoint = 1024px)
   useEffect(() => {
+    const checkDesktop = () => {
+      const desktop = window.innerWidth >= 1024;
+      setIsDesktop(desktop);
+      // On mobile, show all items immediately
+      if (!desktop) {
+        setVisibleItems(new Set(GRID_ITEMS.map((_, i) => i)));
+      }
+    };
+
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
     const handleScroll = () => {
       if (!containerRef.current || !stickyRef.current) return;
 
@@ -49,7 +68,7 @@ export function WhyChoose() {
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isDesktop]);
 
   const isVisible = (index: number) => visibleItems.has(index);
 
@@ -58,7 +77,7 @@ export function WhyChoose() {
       <div
         ref={containerRef}
         className="relative"
-        style={{ height: `${100 + GRID_ITEMS.length * 12}vh` }}
+        style={isDesktop ? { height: `${100 + GRID_ITEMS.length * 12}vh` } : undefined}
       >
         <div
           ref={stickyRef}
