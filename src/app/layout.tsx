@@ -12,7 +12,7 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
         <link href="https://api.fontshare.com/v2/css?f[]=sentient@300,301,400&display=swap" rel="stylesheet" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="antialiased">
+      <body className="antialiased bg-gradient-to-b from-white to-page bg-fixed">
         <SettingsProvider>
           <main>{children}</main>
         </SettingsProvider>

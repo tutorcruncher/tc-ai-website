@@ -1,8 +1,39 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+
 export function Integrations() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-20 px-4 bg-white">
-      <div className="mx-auto max-w-5xl">
-        <div className="text-center mb-12">
+    <section ref={sectionRef} className="py-20 px-4">
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-12"
+        >
           <p className="text-sm font-medium text-link uppercase tracking-wide mb-3">
             Integrations
           </p>
@@ -12,12 +43,17 @@ export function Integrations() {
           <p className="text-muted-dark max-w-2xl mx-auto">
             TutorCruncher AI integrates seamlessly with your existing workflow.
           </p>
-        </div>
+        </motion.div>
 
         {/* Lesson Space Feature */}
-        <div className="bg-page rounded-2xl p-8 md:p-12">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div className="flex-1">
+        <div className="rounded-2xl p-8 md:p-12">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="lg:w-4/7"
+            >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-white rounded-xl border border-default flex items-center justify-center">
                   <svg className="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
@@ -56,10 +92,15 @@ export function Integrations() {
                   <span className="text-primary">No additional software for tutors to install</span>
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
             {/* Visual representation */}
-            <div className="flex-1 w-full max-w-md">
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="lg:w-3/7 w-full"
+            >
               <div className="bg-white rounded-xl border border-default shadow-lg overflow-hidden">
                 {/* Mock browser bar */}
                 <div className="bg-gray-50 border-b border-default px-4 py-2 flex items-center gap-2">
@@ -92,7 +133,7 @@ export function Integrations() {
                   </div>
 
                   {/* Whiteboard area */}
-                  <div className="bg-white border border-default rounded-lg p-4 aspect-[4/3]">
+                  <div className="bg-white border border-default rounded-lg p-4 aspect-video">
                     <div className="h-full flex flex-col items-center justify-center">
                       <p className="text-xs text-muted mb-2">Whiteboard</p>
                       <div className="text-primary font-mono text-sm">
@@ -111,7 +152,7 @@ export function Integrations() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -1,34 +1,18 @@
-interface FeatureCardProps {
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
+interface Feature {
   title: string;
   description: string;
-  children: React.ReactNode;
-  reversed?: boolean;
+  preview: React.ReactNode;
 }
 
-function FeatureCard({ title, description, children, reversed }: FeatureCardProps) {
-  return (
-    <div className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-12 items-center`}>
-      <div className="flex-1 lg:max-w-md">
-        <h3 className="font-heading text-2xl md:text-3xl font-bold text-primary mb-4">
-          {title}
-        </h3>
-        <p className="text-muted-dark leading-relaxed">
-          {description}
-        </p>
-      </div>
-      <div className="flex-1 w-full">
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function MockWindow({ children, title }: { children: React.ReactNode; title?: string }) {
+function MockWindow({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-white rounded-xl shadow-lg border border-default overflow-hidden">
-      <div className="p-4">
-        {children}
-      </div>
+      <div className="p-4">{children}</div>
     </div>
   );
 }
@@ -36,7 +20,7 @@ function MockWindow({ children, title }: { children: React.ReactNode; title?: st
 // Feature 1: AI Lesson Summaries
 function LessonSummaryPreview() {
   return (
-    <MockWindow title="Lesson Summary">
+    <MockWindow>
       <div className="space-y-4">
         <div className="flex items-center gap-3 pb-3 border-b border-default">
           <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
@@ -93,7 +77,7 @@ function LessonSummaryPreview() {
 // Feature 2: Student Performance Insights
 function PerformanceInsightsPreview() {
   return (
-    <MockWindow title="Student Insights">
+    <MockWindow>
       <div className="space-y-4">
         <div className="flex items-center justify-between pb-3 border-b border-default">
           <div className="flex items-center gap-3">
@@ -169,7 +153,7 @@ function PerformanceInsightsPreview() {
 // Feature 3: Tutor Feedback & Coaching
 function TutorFeedbackPreview() {
   return (
-    <MockWindow title="Tutor Feedback">
+    <MockWindow>
       <div className="space-y-4">
         <div className="flex items-center gap-3 pb-3 border-b border-default">
           <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
@@ -221,8 +205,8 @@ function TutorFeedbackPreview() {
             <p className="text-lg font-bold text-primary">8.5/10</p>
           </div>
           <div className="flex gap-1">
-            {[1,2,3,4,5].map(i => (
-              <svg key={i} className={`w-5 h-5 ${i <= 4 ? 'text-yellow-400' : 'text-gray-200'}`} fill="currentColor" viewBox="0 0 20 20">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <svg key={i} className={`w-5 h-5 ${i <= 4 ? "text-yellow-400" : "text-gray-200"}`} fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
             ))}
@@ -233,66 +217,10 @@ function TutorFeedbackPreview() {
   );
 }
 
-// Feature 4: AI Lesson Plan Generator
-function LessonPlanPreview() {
-  return (
-    <MockWindow title="Lesson Plan Generator">
-      <div className="space-y-4">
-        <div className="flex gap-2">
-          <div className="flex-1 px-3 py-2 bg-page border border-default rounded-lg text-sm text-primary">
-            GCSE Maths: Quadratic Equations
-          </div>
-          <button className="px-4 py-2 bg-primary text-white text-sm rounded-lg font-medium">
-            Generate
-          </button>
-        </div>
-
-        <div className="p-4 bg-page rounded-lg border border-default">
-          <div className="flex items-center gap-2 mb-3">
-            <svg className="w-4 h-4 text-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-            </svg>
-            <span className="text-xs text-muted">Generated Lesson Plan</span>
-          </div>
-
-          <div className="text-sm text-primary space-y-3">
-            <div>
-              <p className="font-semibold">Lesson: Introduction to Quadratic Equations</p>
-            </div>
-
-            <div>
-              <p className="font-medium text-muted-dark mb-1">Learning Objectives:</p>
-              <ul className="list-disc list-inside space-y-0.5 text-muted-dark">
-                <li>Understand standard form ax² + bx + c = 0</li>
-                <li>Solve quadratics by factorisation</li>
-                <li>Apply the quadratic formula</li>
-              </ul>
-            </div>
-
-            <div>
-              <p className="font-medium text-muted-dark mb-1">Starter Activity (10 mins):</p>
-              <p className="text-muted-dark">Review linear equations, introduce squared terms</p>
-            </div>
-
-            <div>
-              <p className="font-medium text-muted-dark mb-1">Main Teaching (25 mins):</p>
-              <ol className="list-decimal list-inside space-y-0.5 text-muted-dark">
-                <li>Define quadratic equations with examples</li>
-                <li>Demonstrate factorisation method</li>
-                <li>Introduce the quadratic formula</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
-    </MockWindow>
-  );
-}
-
-// Feature 5: Parent Progress Reports
+// Feature 4: Parent Progress Reports
 function ParentReportPreview() {
   return (
-    <MockWindow title="Progress Report">
+    <MockWindow>
       <div className="space-y-4">
         <div className="flex items-center justify-between pb-3 border-b border-default">
           <div>
@@ -322,11 +250,7 @@ function ParentReportPreview() {
           <p className="text-xs font-medium text-muted uppercase tracking-wide mb-2">Monthly Progress</p>
           <div className="h-20 flex items-end gap-1">
             {[65, 70, 72, 68, 75, 78, 82, 80, 85, 87, 88, 90].map((h, i) => (
-              <div
-                key={i}
-                className="flex-1 bg-blue-500 rounded-t"
-                style={{ height: `${h}%` }}
-              />
+              <div key={i} className="flex-1 bg-blue-500 rounded-t" style={{ height: `${h}%` }} />
             ))}
           </div>
           <div className="flex justify-between mt-1 text-xs text-muted">
@@ -346,10 +270,10 @@ function ParentReportPreview() {
   );
 }
 
-// Feature 6: Automatic Attendance Tracking
+// Feature 5: Automatic Attendance Tracking
 function AttendancePreview() {
   return (
-    <MockWindow title="Attendance">
+    <MockWindow>
       <div className="space-y-4">
         <div className="flex items-center justify-between pb-3 border-b border-default">
           <p className="font-medium text-primary text-sm">Today&apos;s Lessons</p>
@@ -421,67 +345,180 @@ function AttendancePreview() {
   );
 }
 
+const FEATURES: Feature[] = [
+  {
+    title: "AI Lesson Summaries",
+    description:
+      "Every recorded lesson is automatically transcribed and summarised. Get a clear overview of what was covered, key topics discussed, and timestamped chapters—without tutors writing a single note.",
+    preview: <LessonSummaryPreview />,
+  },
+  {
+    title: "Student Performance Insights",
+    description:
+      "AI analyses each student's engagement, identifies their strengths, and highlights areas for improvement. Track individual progress across every lesson, even in group sessions.",
+    preview: <PerformanceInsightsPreview />,
+  },
+  {
+    title: "Tutor Feedback & Coaching",
+    description:
+      "Tutors receive personalised feedback on their teaching after each session. Understand what's working, get actionable suggestions, and improve continuously—without manual observations.",
+    preview: <TutorFeedbackPreview />,
+  },
+  {
+    title: "Parent Progress Reports",
+    description:
+      "Generate professional reports summarising student progress over any time period. Share real evidence of improvement with parents and clients—not just vague updates.",
+    preview: <ParentReportPreview />,
+  },
+  {
+    title: "Automatic Attendance Tracking",
+    description:
+      "AI detects who joined each lesson and when. Attendance is logged automatically from the recording—no manual registers, no chasing tutors for confirmation.",
+    preview: <AttendancePreview />,
+  },
+];
+
 export function FeatureShowcase() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current || !stickyRef.current) return;
+
+      const container = containerRef.current;
+      const containerRect = container.getBoundingClientRect();
+      const stickyHeight = stickyRef.current.offsetHeight;
+
+      // The scrollable height within the container (total height minus the sticky content height)
+      const scrollableHeight = container.offsetHeight - stickyHeight;
+
+      // How far we've scrolled into the container (accounting for the sticky offset)
+      const scrollProgress = -containerRect.top;
+
+      // Calculate which feature should be active
+      const segmentHeight = scrollableHeight / FEATURES.length;
+
+      // Only update active index if we're within the scrollable area
+      if (scrollProgress >= 0 && scrollProgress <= scrollableHeight) {
+        const newIndex = Math.min(
+          FEATURES.length - 1,
+          Math.max(0, Math.floor(scrollProgress / segmentHeight))
+        );
+
+        if (newIndex !== activeIndex) {
+          setActiveIndex(newIndex);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [activeIndex]);
+
   return (
-    <section id="features" className="py-20 px-4 bg-white scroll-mt-16">
-      <div className="mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <p className="text-sm font-medium text-link uppercase tracking-wide mb-3">
-            Platform Features
-          </p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
-            Everything you need to transform tutoring
-          </h2>
-          <p className="text-muted-dark max-w-2xl mx-auto">
-            Powerful AI tools that work together to give you complete visibility into every lesson.
-          </p>
+    <section id="features" className="px-4 scroll-mt-16">
+      {/* Container with extra height for scroll-through */}
+      <div ref={containerRef} className="relative" style={{ height: `${100 + (FEATURES.length - 1) * 50}vh` }}>
+        {/* Sticky content - full viewport height, centered */}
+        <div ref={stickyRef} className="lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col lg:justify-center lg:pt-16 py-20">
+          <div className="mx-auto max-w-6xl w-full">
+            <div className="text-center mb-12">
+              <p className="text-sm font-medium text-link uppercase tracking-wide mb-3">
+                Platform Features
+              </p>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+                Everything you need to transform tutoring
+              </h2>
+              <p className="text-muted-dark max-w-2xl mx-auto">
+                Powerful AI tools that work together to give you complete visibility into every lesson.
+              </p>
+            </div>
+
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 w-full">
+              {/* Left side - Feature titles */}
+              <div className="lg:w-2/5">
+                <div className="space-y-10">
+  {FEATURES.map((feature, index) => {
+    const isActive = activeIndex === index;
+
+    return (
+      <button
+        key={index}
+        onClick={() => {
+          setActiveIndex(index);
+          if (containerRef.current) {
+            const container = containerRef.current;
+            const stickyHeight = stickyRef.current?.offsetHeight || 0;
+            const scrollableHeight = container.offsetHeight - stickyHeight;
+            const segmentHeight = scrollableHeight / FEATURES.length;
+            const targetScroll =
+              container.offsetTop + segmentHeight * index + segmentHeight / 2;
+            window.scrollTo({ top: targetScroll, behavior: "smooth" });
+          }
+        }}
+        className="w-full text-left py-2"
+      >
+        <div className="flex items-start gap-3">
+          <div
+            className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium transition-colors mt-0.5 ${
+              isActive ? "bg-primary text-primary" : "bg-gray-200 text-muted"
+            }`}
+          >
+            {index + 1}
+          </div>
+
+          <div className="min-w-0">
+            <h3
+              className={`font-heading text-lg font-semibold transition-colors ${
+                isActive ? "text-primary" : "text-muted"
+              }`}
+            >
+              {feature.title}
+            </h3>
+
+            <AnimatePresence initial={false}>
+              {isActive && (
+                <motion.p
+                  key="desc"
+                  initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                  animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+                  exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="text-sm leading-relaxed text-muted-dark overflow-hidden"
+                >
+                  {feature.description}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
+      </button>
+    );
+  })}
+</div>
+              </div>
 
-        <div className="space-y-24">
-          <FeatureCard
-            title="AI Lesson Summaries"
-            description="Every recorded lesson is automatically transcribed and summarised. Get a clear overview of what was covered, key topics discussed, and timestamped chapters—without tutors writing a single note."
-          >
-            <LessonSummaryPreview />
-          </FeatureCard>
-
-          <FeatureCard
-            title="Student Performance Insights"
-            description="AI analyses each student's engagement, identifies their strengths, and highlights areas for improvement. Track individual progress across every lesson, even in group sessions."
-            reversed
-          >
-            <PerformanceInsightsPreview />
-          </FeatureCard>
-
-          <FeatureCard
-            title="Tutor Feedback & Coaching"
-            description="Tutors receive personalised feedback on their teaching after each session. Understand what's working, get actionable suggestions, and improve continuously—without manual observations."
-          >
-            <TutorFeedbackPreview />
-          </FeatureCard>
-
-          <FeatureCard
-            title="AI Lesson Plan Generator"
-            description="Before a session, tutors can generate structured lesson plans tailored to the student's history and learning goals. Enter a topic, click generate, and get a ready-to-use plan in seconds."
-            reversed
-          >
-            <LessonPlanPreview />
-          </FeatureCard>
-
-          <FeatureCard
-            title="Parent Progress Reports"
-            description="Generate professional reports summarising student progress over any time period. Share real evidence of improvement with parents and clients—not just vague updates."
-          >
-            <ParentReportPreview />
-          </FeatureCard>
-
-          <FeatureCard
-            title="Automatic Attendance Tracking"
-            description="AI detects who joined each lesson and when. Attendance is logged automatically from the recording—no manual registers, no chasing tutors for confirmation."
-            reversed
-          >
-            <AttendancePreview />
-          </FeatureCard>
+              {/* Right side - Preview */}
+              <div className="lg:w-3/5">
+                <div className="relative">
+                  {FEATURES.map((feature, index) => (
+                    <div
+                      key={index}
+                      className={`transition-opacity duration-300 ${
+                        activeIndex === index ? "opacity-100" : "opacity-0 absolute inset-0 pointer-events-none"
+                      }`}
+                    >
+                      {feature.preview}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
