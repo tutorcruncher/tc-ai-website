@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import { Button } from "@/components/Button";
 import { PromptDemo } from "@/components/PromptDemo";
 
@@ -17,7 +18,8 @@ export function Hero() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="font-heading text-4xl md:text-5xl lg:text-6xld mb-6 leading-tight"
             >
-              The <span className="text-link font-bold">AI insights</span> you'll wish you had for every lesson.
+              The <span className="text-link font-bold">AI insights</span> you&apos;ll wish you had
+              for every lesson.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -25,14 +27,16 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
               className="text-lg md:text-xl text-muted-dark max-w-2xl mx-auto lg:mx-0 mb-6"
             >
-              TutorCruncher AI transforms every lesson into actionable insights—tracking student progress, highlighting strengths, and surfacing areas for improvement without any extra work from your tutors.
+              TutorCruncher AI transforms every lesson into actionable insights—tracking student
+              progress, highlighting strengths, and surfacing areas for improvement without any
+              extra work from your tutors.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             >
-              <Button href="/early-access" className="mx-auto lg:mx-0">
+              <Button href="https://forms.gle/uunftAqJqn2ZFQzFA" className="mx-auto lg:mx-0">
                 Join Early Access
               </Button>
             </motion.div>

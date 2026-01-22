@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
+
 import { SettingsSidebar } from "./SettingsSidebar";
 
 interface SettingsProviderProps {

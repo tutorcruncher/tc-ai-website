@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 // Grid items with their positions for staggered reveal
 const GRID_ITEMS = [
@@ -35,7 +35,7 @@ export function WhyChoose() {
         const progress = scrollProgress / scrollableHeight;
         const itemsToShow = Math.floor(progress * (GRID_ITEMS.length + 1));
 
-        setVisibleItems(prev => {
+        setVisibleItems((prev) => {
           const newSet = new Set(prev);
           for (let i = 0; i < itemsToShow; i++) {
             newSet.add(i);
@@ -79,8 +79,7 @@ export function WhyChoose() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-center text-muted-dark mb-12 max-w-2xl mx-auto"
             >
-              Purpose-built for tutoring companies who want to deliver exceptional
-              results.
+              Purpose-built for tutoring companies who want to deliver exceptional results.
             </motion.p>
 
             {/* Bento Grid */}
@@ -91,26 +90,47 @@ export function WhyChoose() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isVisible(0) ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="md:col-span-2 bg-white rounded-2xl border border-default p-6 md:p-8"
+                className="md:col-span-2 bg-white rounded-2xl border border-default overflow-hidden"
               >
-                <h3 className="font-heading text-xl font-semibold text-primary mb-2">
-                  Save Hours Every Week
-                </h3>
-                <p className="text-muted-dark text-sm mb-6">
-                  No more chasing tutors for lesson notes. Every session is automatically summarised and ready to review.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-page rounded-lg">
-                    <span className="text-sm text-primary">Lesson summary</span>
-                    <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full">Auto-generated</span>
+                <div className="flex flex-col md:flex-row h-full">
+                  {/* Image on left */}
+                  <div className="md:w-2/5 h-48 md:h-auto relative">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="https://plus.unsplash.com/premium_photo-1661714188599-e132395b5bf8?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Tutors collaborating"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-page rounded-lg">
-                    <span className="text-sm text-primary">Student feedback</span>
-                    <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full">Auto-generated</span>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-page rounded-lg">
-                    <span className="text-sm text-primary">Attendance tracking</span>
-                    <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full">Auto-detected</span>
+                  {/* Content on right */}
+                  <div className="md:w-3/5 p-6 md:p-8">
+                    <h3 className="font-heading text-xl font-semibold text-primary mb-2">
+                      Save Hours Every Week
+                    </h3>
+                    <p className="text-muted-dark text-sm mb-6">
+                      Every session is automatically summarised and ready to review so you can focus
+                      on what&apos;s important.
+                    </p>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between p-3 bg-page rounded-lg">
+                        <span className="text-sm text-primary">Lesson summary</span>
+                        <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full">
+                          Auto-generated
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between p-3 bg-page rounded-lg">
+                        <span className="text-sm text-primary">Student feedback</span>
+                        <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full">
+                          Auto-generated
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between p-3 bg-page rounded-lg">
+                        <span className="text-sm text-primary">Attendance tracking</span>
+                        <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full">
+                          Auto-detected
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -127,8 +147,18 @@ export function WhyChoose() {
                     <h3 className="font-heading text-lg font-semibold text-primary">
                       Real-time Insights
                     </h3>
-                    <svg className="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                    <svg
+                      className="w-5 h-5 text-purple-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+                      />
                     </svg>
                   </div>
                   <p className="text-muted text-sm mt-1">Analysis within 15 minutes</p>
@@ -146,7 +176,7 @@ export function WhyChoose() {
                     <div className="flex -space-x-2">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=56&h=56&fit=crop&crop=face"
+                        src="https://images.unsplash.com/photo-1664382953518-4a664ab8a8c9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="Emma"
                         className="w-7 h-7 rounded-full border-2 border-white object-cover"
                       />
@@ -208,7 +238,10 @@ export function WhyChoose() {
                   <div className="flex-1 space-y-2">
                     <div className="flex items-center gap-2">
                       <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div className="h-full bg-green-500 rounded-full" style={{ width: "92%" }} />
+                        <div
+                          className="h-full bg-green-500 rounded-full"
+                          style={{ width: "92%" }}
+                        />
                       </div>
                       <span className="text-xs text-muted w-16">Clarity</span>
                     </div>
@@ -228,17 +261,12 @@ export function WhyChoose() {
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="bg-white rounded-2xl border border-default p-6 text-center"
               >
-                <div className="flex justify-center gap-1 mb-4">
-                  <span className="w-3 h-3 rounded-full bg-blue-500" />
-                  <span className="w-3 h-3 rounded-full bg-red-500" />
-                  <span className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <span className="w-3 h-3 rounded-full bg-green-500" />
-                </div>
                 <h3 className="font-heading text-xl font-semibold text-primary mb-2">
                   One Platform
                 </h3>
                 <p className="text-muted-dark text-sm">
-                  All your lesson data and insights in one place. No more juggling multiple tools.
+                  All your lesson data and insights in one place. No more juggling multiple tools or
+                  chasing tutors for updates.
                 </p>
               </motion.div>
 
@@ -256,7 +284,11 @@ export function WhyChoose() {
                 </p>
                 <div className="flex items-end gap-1 h-16">
                   {[40, 45, 42, 55, 60, 58, 70, 75, 80, 85, 88, 92].map((h, i) => (
-                    <div key={i} className="flex-1 bg-blue-500 rounded-t" style={{ height: `${h}%` }} />
+                    <div
+                      key={i}
+                      className="flex-1 bg-blue-500 rounded-t"
+                      style={{ height: `${h}%` }}
+                    />
                   ))}
                 </div>
                 <div className="flex justify-between mt-2 text-xs text-muted">
@@ -279,7 +311,8 @@ export function WhyChoose() {
                       Always in the Loop
                     </h3>
                     <p className="text-muted-dark text-sm">
-                      Stay informed with automatic notifications about student progress, lesson completions, and important insights.
+                      Stay informed with automatic notifications about student progress, lesson
+                      completions, and important insights.
                     </p>
                   </div>
                   <div className="flex-1 space-y-2">
@@ -299,7 +332,9 @@ export function WhyChoose() {
                         alt="James"
                         className="w-8 h-8 rounded-full object-cover"
                       />
-                      <span className="text-sm text-primary">Progress milestone: James completed algebra module</span>
+                      <span className="text-sm text-primary">
+                        Progress milestone: James completed algebra module
+                      </span>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-page rounded-lg">
                       <div className="flex -space-x-1">
@@ -323,11 +358,23 @@ export function WhyChoose() {
                         />
                       </div>
                       <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-                        <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        <svg
+                          className="w-4 h-4 text-green-600"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                          />
                         </svg>
                       </div>
-                      <span className="text-sm text-primary">Weekly report generated for 12 students</span>
+                      <span className="text-sm text-primary">
+                        Weekly report generated for 12 students
+                      </span>
                     </div>
                   </div>
                 </div>

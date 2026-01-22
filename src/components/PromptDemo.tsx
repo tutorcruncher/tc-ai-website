@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const DEMO_PROMPT = "Generate a lesson plan for GCSE maths: quadratic equations";
 const TYPING_SPEED = 40;
@@ -104,14 +104,17 @@ export function PromptDemo() {
     setCurrentSpeaker("tutor");
     setPhase("typing");
   };
-  
+
   const responseRef = useRef<HTMLDivElement>(null);
   const transcriptRef = useRef<HTMLDivElement>(null);
   const reportRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to keep latest content in view
   useEffect(() => {
-    if (responseRef.current && ["generating", "selecting", "deleting", "replacing"].includes(phase)) {
+    if (
+      responseRef.current &&
+      ["generating", "selecting", "deleting", "replacing"].includes(phase)
+    ) {
       responseRef.current.scrollTop = responseRef.current.scrollHeight;
     }
     if (transcriptRef.current && phase === "transcript-generating") {
@@ -168,7 +171,7 @@ export function PromptDemo() {
       case "deleting":
         if (deletingText.length > 0) {
           timeout = setTimeout(() => {
-            setDeletingText(prev => prev.slice(0, -1));
+            setDeletingText((prev) => prev.slice(0, -1));
           }, DELETE_SPEED);
         } else {
           timeout = setTimeout(() => setPhase("replacing"), 300);
@@ -198,11 +201,11 @@ export function PromptDemo() {
       case "video-playing":
         if (videoProgress < 100) {
           timeout = setTimeout(() => {
-            setVideoProgress(prev => Math.min(prev + 2, 100));
-            setVideoTime(prev => prev + 1);
-            // Alternate speaker every ~3 seconds (roughly every 6 ticks at 80ms)
-            if (videoTime > 0 && videoTime % 6 === 0) {
-              setCurrentSpeaker(prev => prev === "tutor" ? "student" : "tutor");
+            setVideoProgress((prev) => Math.min(prev + 2, 100));
+            setVideoTime((prev) => prev + 1);
+            // Alternate speaker every 4 seconds
+            if (videoTime > 0 && videoTime % 10 === 0) {
+              setCurrentSpeaker((prev) => (prev === "tutor" ? "student" : "tutor"));
             }
           }, 80);
         } else {
@@ -248,32 +251,51 @@ export function PromptDemo() {
     }
 
     return () => clearTimeout(timeout);
-  }, [displayedText, responseText, editNewText, deletingText, transcriptText, reportText, phase, videoProgress, videoTime]);
+  }, [
+    displayedText,
+    responseText,
+    editNewText,
+    deletingText,
+    transcriptText,
+    reportText,
+    phase,
+    videoProgress,
+    videoTime,
+  ]);
 
   const showPromptSection = [
-    "typing", "paused", "loading", "generating", "generated", "selecting", "deleting", "replacing", "replaced"
+    "typing",
+    "paused",
+    "loading",
+    "generating",
+    "generated",
+    "selecting",
+    "deleting",
+    "replacing",
+    "replaced",
   ].includes(phase);
 
-  const showVideoSection = [
-    "start-lesson", "video-playing", "video-ending"
-  ].includes(phase);
+  const showVideoSection = ["start-lesson", "video-playing", "video-ending"].includes(phase);
 
-  const showTranscriptSection = [
-    "transcript-generating", "transcript-complete"
-  ].includes(phase);
+  const showTranscriptSection = ["transcript-generating", "transcript-complete"].includes(phase);
 
-  const showReportSection = [
-    "report-generating", "report-complete"
-  ].includes(phase);
+  const showReportSection = ["report-generating", "report-complete"].includes(phase);
 
   const isButtonActive = phase === "paused" || phase === "loading";
-  const showResponse = ["generating", "generated", "selecting", "deleting", "replacing", "replaced"].includes(phase);
+  const showResponse = [
+    "generating",
+    "generated",
+    "selecting",
+    "deleting",
+    "replacing",
+    "replaced",
+  ].includes(phase);
   const isEditing = ["selecting", "deleting", "replacing"].includes(phase);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
   const getHeaderText = () => {
@@ -304,7 +326,7 @@ export function PromptDemo() {
 
   // Split the text at the edit location
   const textBeforeEdit = LESSON_PLAN_BEFORE_EDIT.substring(
-    0, 
+    0,
     LESSON_PLAN_BEFORE_EDIT.indexOf(EDIT_TEXT_ORIGINAL)
   );
 
@@ -317,10 +339,10 @@ export function PromptDemo() {
             <span className="inline-block w-0.5 h-4 bg-link ml-0.5 animate-pulse" />
           </>
         );
-      
+
       case "generated":
         return responseText;
-      
+
       case "selecting":
         return (
           <>
@@ -330,33 +352,29 @@ export function PromptDemo() {
             </span>
           </>
         );
-      
+
       case "deleting":
         return (
           <>
             {textBeforeEdit}
             <span className="relative inline-block">
-              <span className="bg-red-200 text-red-800 px-0.5 rounded-sm">
-                {deletingText}
-              </span>
+              <span className="bg-red-200 text-red-800 px-0.5 rounded-sm">{deletingText}</span>
               <span className="inline-block w-0.5 h-4 bg-red-600 animate-[pulse_0.3s_ease-in-out_infinite] align-middle ml-px" />
             </span>
           </>
         );
-      
+
       case "replacing":
         return (
           <>
             {textBeforeEdit}
             <span className="relative inline-block">
-              <span className="bg-green-200 text-green-800 px-0.5 rounded-sm">
-                {editNewText}
-              </span>
+              <span className="bg-green-200 text-green-800 px-0.5 rounded-sm">{editNewText}</span>
               <span className="inline-block w-0.5 h-4 bg-green-600 animate-[pulse_0.5s_ease-in-out_infinite] align-middle ml-px" />
             </span>
           </>
         );
-      
+
       case "replaced":
         return (
           <>
@@ -364,7 +382,7 @@ export function PromptDemo() {
             <span className="text-green-700 font-medium">{EDIT_TEXT_NEW}</span>
           </>
         );
-      
+
       default:
         return responseText;
     }
@@ -394,7 +412,7 @@ export function PromptDemo() {
             <>
               {/* Text area */}
               <div className="relative">
-                <div className="w-full min-h-[60px] p-3 bg-page rounded-lg border border-default text-sm text-primary">
+                <div className="w-full min-h-[60px] p-3 bg-input rounded-lg border border-default text-sm text-primary">
                   {displayedText}
                   {phase === "typing" && (
                     <span className="inline-block w-0.5 h-4 bg-primary ml-0.5 animate-pulse" />
@@ -419,14 +437,31 @@ export function PromptDemo() {
                   {phase === "loading" ? (
                     <span className="flex items-center gap-2">
                       <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        />
                       </svg>
                       Generating...
                     </span>
                   ) : showResponse ? (
                     <span className="flex items-center gap-2">
-                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <svg
+                        className="h-4 w-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       Generated
@@ -439,34 +474,64 @@ export function PromptDemo() {
 
               {/* Response area */}
               {showResponse && (
-                <div className={`mt-4 p-4 bg-page rounded-lg border transition-all duration-300 ${
-                  isEditing ? "border-blue-400 ring-2 ring-blue-200" : "border-default"
-                }`}>
+                <div
+                  className={`mt-4 p-4 bg-input rounded-lg border transition-all duration-300 ${
+                    isEditing ? "border-blue-400 ring-2 ring-blue-200" : "border-default"
+                  }`}
+                >
                   <div className="text-xs text-muted mb-2 flex items-center justify-between">
                     <span className="flex items-center gap-2">
-                      <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                      <svg
+                        className="h-3 w-3"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"
+                        />
                       </svg>
                       Lesson Plan
                     </span>
                     {["selecting", "deleting", "replacing", "replaced"].includes(phase) && (
-                      <span className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${
-                        phase === "selecting" ? "bg-blue-100 text-blue-700" :
-                        phase === "deleting" ? "bg-red-100 text-red-700" :
-                        phase === "replacing" ? "bg-green-100 text-green-700" :
-                        "bg-green-100 text-green-700"
-                      }`}>
-                        <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z" />
+                      <span
+                        className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${
+                          phase === "selecting"
+                            ? "bg-blue-100 text-blue-700"
+                            : phase === "deleting"
+                              ? "bg-red-100 text-red-700"
+                              : phase === "replacing"
+                                ? "bg-green-100 text-green-700"
+                                : "bg-green-100 text-green-700"
+                        }`}
+                      >
+                        <svg
+                          className="h-3 w-3"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"
+                          />
                         </svg>
-                        {phase === "selecting" ? "Selecting..." :
-                         phase === "deleting" ? "Deleting..." :
-                         phase === "replacing" ? "Typing..." :
-                         "Edited ✓"}
+                        {phase === "selecting"
+                          ? "Selecting..."
+                          : phase === "deleting"
+                            ? "Deleting..."
+                            : phase === "replacing"
+                              ? "Typing..."
+                              : "Edited ✓"}
                       </span>
                     )}
                   </div>
-                  <div 
+                  <div
                     ref={responseRef}
                     className="text-sm text-primary whitespace-pre-wrap text-left leading-relaxed max-h-[200px] overflow-y-auto scroll-smooth"
                   >
@@ -488,13 +553,15 @@ export function PromptDemo() {
                   <div className="flex-1 relative border-r border-gray-700 overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop&crop=face"
+                      src="https://images.unsplash.com/photo-1664382953518-4a664ab8a8c9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       alt="Tutor"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-2 left-2 right-2">
-                      <span className="text-white text-xs font-medium bg-black/40 px-2 py-0.5 rounded">Sarah (Tutor)</span>
+                      <span className="text-white text-xs font-medium bg-black/40 px-2 py-0.5 rounded">
+                        Sarah (Tutor)
+                      </span>
                       {/* Speaking indicator */}
                       <div className="flex gap-0.5 mt-1">
                         {currentSpeaker === "tutor" ? (
@@ -519,13 +586,15 @@ export function PromptDemo() {
                   <div className="flex-1 relative overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=300&fit=crop&crop=face"
+                      src="https://images.unsplash.com/photo-1534643960519-11ad79bc19df?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       alt="Student"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-2 left-2 right-2">
-                      <span className="text-white text-xs font-medium bg-black/40 px-2 py-0.5 rounded">Emma (Student)</span>
+                      <span className="text-white text-xs font-medium bg-black/40 px-2 py-0.5 rounded">
+                        Emma (Student)
+                      </span>
                       {/* Speaking indicator */}
                       <div className="flex gap-0.5 mt-1">
                         {currentSpeaker === "student" ? (
@@ -564,13 +633,33 @@ export function PromptDemo() {
                   <div className="flex items-center justify-between text-white">
                     <div className="flex items-center gap-3">
                       <button className="p-1.5 hover:bg-white/20 rounded">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"
+                          />
                         </svg>
                       </button>
                       <button className="p-1.5 hover:bg-white/20 rounded">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
+                          />
                         </svg>
                       </button>
                     </div>
@@ -585,7 +674,7 @@ export function PromptDemo() {
               {/* Progress bar */}
               <div className="space-y-1">
                 <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                  <div 
+                  <div
                     className="h-full bg-blue-500 rounded-full transition-all duration-100 ease-linear"
                     style={{ width: `${videoProgress}%` }}
                   />
@@ -602,15 +691,25 @@ export function PromptDemo() {
           {showTranscriptSection && (
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-xs text-muted">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+                  />
                 </svg>
                 <span>Generating transcript from recording...</span>
               </div>
-              
-              <div 
+
+              <div
                 ref={transcriptRef}
-                className="p-4 bg-page rounded-lg border border-default max-h-[200px] overflow-y-auto scroll-smooth"
+                className="p-4 bg-input rounded-lg border border-default max-h-[200px] overflow-y-auto scroll-smooth"
               >
                 <div className="text-sm text-primary whitespace-pre-wrap text-left leading-relaxed font-mono">
                   {transcriptText}
@@ -622,8 +721,18 @@ export function PromptDemo() {
 
               {phase === "transcript-complete" && (
                 <div className="flex items-center gap-2 text-xs text-green-600">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                   <span>Transcript complete • Generating summary...</span>
                 </div>
@@ -635,15 +744,25 @@ export function PromptDemo() {
           {showReportSection && (
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-xs text-muted">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
+                  />
                 </svg>
                 <span>AI-Generated Lesson Summary</span>
               </div>
 
-              <div 
+              <div
                 ref={reportRef}
-                className="p-4 bg-page rounded-lg border border-default max-h-[220px] overflow-y-auto scroll-smooth"
+                className="p-4 bg-input rounded-lg border border-default max-h-[220px] overflow-y-auto scroll-smooth"
               >
                 <div className="text-sm text-primary whitespace-pre-wrap text-left leading-relaxed">
                   {reportText}
@@ -656,8 +775,18 @@ export function PromptDemo() {
               {phase === "report-complete" && (
                 <div className="flex gap-2">
                   <button className="flex-1 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-lg font-medium flex items-center justify-center gap-2">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"
+                      />
                     </svg>
                     Share Report
                   </button>
@@ -665,8 +794,18 @@ export function PromptDemo() {
                     onClick={handleReplay}
                     className="pointer-events-auto flex-1 px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded-lg font-medium flex items-center justify-center gap-2"
                   >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                      />
                     </svg>
                     Replay
                   </button>

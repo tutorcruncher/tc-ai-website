@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface ColorSetting {
   label: string;
@@ -17,6 +17,7 @@ interface FontSetting {
 
 const COLOR_SETTINGS: ColorSetting[] = [
   { label: "Primary", cssVar: "--color-primary", defaultValue: "#1F374E" },
+  { label: "Accent", cssVar: "--background-color-primary", defaultValue: "#76ef92" },
   { label: "Link", cssVar: "--color-link", defaultValue: "#3B82F6" },
   { label: "Muted", cssVar: "--color-muted", defaultValue: "#9CA3AF" },
   { label: "Muted Dark", cssVar: "--color-muted-dark", defaultValue: "#6B7280" },
@@ -34,7 +35,7 @@ const FONT_SETTINGS: FontSetting[] = [
       { label: "Halyard Display", value: '"halyard-display", system-ui, sans-serif' },
       { label: "Georgia", value: 'Georgia, "Times New Roman", serif' },
       { label: "Inter", value: '"Inter", system-ui, sans-serif' },
-      { label: "System UI", value: 'system-ui, -apple-system, sans-serif' },
+      { label: "System UI", value: "system-ui, -apple-system, sans-serif" },
       { label: "Playfair Display", value: '"Playfair Display", Georgia, serif' },
     ],
     defaultValue: '"Sentient", Georgia, "Times New Roman", serif',
@@ -144,9 +145,7 @@ export function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProps) {
         <div className="h-full flex flex-col">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-default">
-            <h2 className="font-heading text-lg font-semibold text-primary">
-              Theme Settings
-            </h2>
+            <h2 className="font-heading text-lg font-semibold text-primary">Theme Settings</h2>
             <button
               onClick={onClose}
               className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -159,11 +158,7 @@ export function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProps) {
                 stroke="currentColor"
                 strokeWidth={2}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
@@ -178,9 +173,7 @@ export function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProps) {
               <div className="space-y-4">
                 {FONT_SETTINGS.map((setting) => (
                   <div key={setting.cssVar}>
-                    <label className="block text-sm text-muted-dark mb-1.5">
-                      {setting.label}
-                    </label>
+                    <label className="block text-sm text-muted-dark mb-1.5">{setting.label}</label>
                     <select
                       value={fonts[setting.cssVar] || setting.defaultValue}
                       onChange={(e) => handleFontChange(setting.cssVar, e.target.value)}
@@ -251,7 +244,8 @@ export function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProps) {
           <div className="p-4 pt-0 text-center">
             <span className="text-xs text-muted">
               Press <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">⌘K</kbd> or{" "}
-              <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">Ctrl+K</kbd> to toggle
+              <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">Ctrl+K</kbd> to
+              toggle
             </span>
           </div>
         </div>

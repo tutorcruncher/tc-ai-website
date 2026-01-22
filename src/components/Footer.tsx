@@ -10,9 +10,7 @@ export function Footer() {
             Terms of Service
           </a>
         </div>
-        <div>
-          © {new Date().getFullYear()} TutorCruncher AI
-        </div>
+        <div>© {new Date().getFullYear()} TutorCruncher AI</div>
       </div>
     </footer>
   );

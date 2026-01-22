@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+
 import { Button } from "@/components/Button";
 
 export function CTASection() {
@@ -44,7 +45,8 @@ export function CTASection() {
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
           className="text-lg text-muted-dark max-w-2xl mx-auto mb-8"
         >
-          Join a select group of tutoring companies getting early access to AI-powered lesson insights.
+          Join a select group of tutoring companies getting early access to AI-powered lesson
+          insights.
         </motion.p>
 
         <motion.div
@@ -53,7 +55,7 @@ export function CTASection() {
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           className="mb-8"
         >
-          <Button href="/early-access" size="large">
+          <Button href="https://forms.gle/uunftAqJqn2ZFQzFA" size="large">
             Request Early Access
           </Button>
         </motion.div>
@@ -98,7 +100,8 @@ export function CTASection() {
             />
           </div>
           <p className="text-sm text-muted-dark">
-            <span className="font-medium text-primary">50+ tutoring companies</span> already on the waitlist
+            <span className="font-medium text-primary">50+ tutoring companies</span> already on the
+            waitlist
           </p>
         </motion.div>
       </div>

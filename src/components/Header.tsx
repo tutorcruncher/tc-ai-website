@@ -23,7 +23,7 @@ export function Header() {
             >
               Why Us
             </a>
-             <a
+            <a
               href="#integrations"
               className="text-sm font-medium text-primary hover:text-link transition-colors"
             >
@@ -38,7 +38,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Button href="/early-access" size="small">
+            <Button href="https://forms.gle/uunftAqJqn2ZFQzFA" size="small">
               Get Early Access
             </Button>
           </div>

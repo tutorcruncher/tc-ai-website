@@ -1,39 +1,38 @@
 import { Metadata } from "next/types";
-import { CTASection } from "@/components/CTASection";
-import { FAQ } from "@/components/FAQ";
-import { FeatureShowcase } from "@/components/FeatureShowcase";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { Integrations } from "@/components/Integrations";
-import { Security } from "@/components/Security";
-import { WhyChoose } from "@/components/WhyChoose";
+
+import { Logo } from "@/components/Logo";
 
 export const metadata: Metadata = {
-  title: "TutorCruncher AI | AI-Powered Tutoring Platform",
-  description:
-    "TutorCruncher AI harnesses artificial intelligence to deliver personalised, data-driven educational experiences.",
+  title: "TutorCruncher AI | TutorCruncher",
 };
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen text-primary">
-      <Header />
-      <Hero />
-
-      <FeatureShowcase />
-
-      <WhyChoose />
-
-      <Integrations />
-
-      <Security />
-
-      <FAQ />
-
-      <CTASection />
-
-      <Footer />
+    <div className="bg-gradient-to-r from-[oklch(0.97_0.014_254.604)] to-[oklch(0.809_0.105_251.813)] py-20 px-4 min-h-screen flex items-center relative overflow-hidden">
+      <div className="max-w-[600px] mx-auto flex flex-col items-center justify-center text-center gap-5 relative z-10">
+        <Logo />
+        <div>
+          <div className="text-xl leading-relaxed mb-10 animate-fade-up animation-delay-200 opacity-0">
+            <p className="mb-6">
+              TutorCruncher AI is the next-generation tutoring platform that harnesses the power of
+              artificial intelligence to deliver personalised, data-driven educational experiences.
+            </p>
+            <p>
+              Our cutting-edge AI technology analyses every lesson, providing tutors and companies
+              with unprecedented insights to maximise student success.
+            </p>
+          </div>
+          <div className="animate-fade-up animation-delay-600 opacity-0">
+            <a
+              href="https://forms.gle/uunftAqJqn2ZFQzFA"
+              target="_blank"
+              className="inline-block px-6 py-3 bg-black text-white rounded-lg hover:bg-black/70 transition-colors"
+            >
+              Get Early Access
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

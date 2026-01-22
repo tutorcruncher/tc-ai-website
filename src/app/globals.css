@@ -15,26 +15,27 @@ html {
     ============================================ */
   /* --color-*: initial; */
 
-  --color-white: #FFFFFF;
-  --color-link: #3B82F6;
-  --color-primary: #1F374E;
-  --color-muted: #9CA3AF;
-  --color-muted-dark: #6B7280;
+  --color-white: #ffffff;
+  --color-link: #3b82f6;
+  --color-primary: #1f374e;
+  --color-muted: #9ca3af;
+  --color-muted-dark: #6b7280;
 
   /* ============================================
     BACKGROUNDS
     ============================================ */
-  --background-color-primary: #94f27f;
+  --background-color-primary: #76ef92;
   --background-color-page: #eff5ff;
+  --background-color-input: #f8f8fb;
   --background-color-content: #f9fafc;
-  --background-color-hover: #F1F5F9;
+  --background-color-hover: #f1f5f9;
   --background-color-overlay: rgba(000, 000, 000, 0.4);
   --background-color-overlay-light: rgba(255, 255, 255, 0.75);
 
   /* ============================================
     BORDERS
     ============================================ */
-   --border-color-default: #E5E7EB;
+  --border-color-default: #e5e7eb;
 
   /* ============================================
      ALERTS & NOTIFICATIONS
@@ -52,22 +53,24 @@ html {
   --text-color-warning: #422006;
 
   --background-color-info: #eff5ff;
-  --border-color-info: #3B82F6;
-  --text-color-info: #1E40AF;
+  --border-color-info: #3b82f6;
+  --text-color-info: #1e40af;
 
   /* ============================================
   INPUTS
   ============================================ */
-  --color-placeholder: #94A3B8;
+  --color-placeholder: #94a3b8;
 }
 
 @layer base {
-  *, ::before, ::after {
+  *,
+  ::before,
+  ::after {
     @apply border-default;
   }
 
-  a{
-    @apply text-link
+  a {
+    @apply text-link;
   }
 }
 
