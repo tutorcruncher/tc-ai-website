@@ -423,7 +423,7 @@ function AttendancePreview() {
 
 export function FeatureShowcase() {
   return (
-    <section className="py-20 px-4 bg-white">
+    <section id="features" className="py-20 px-4 bg-white scroll-mt-16">
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <p className="text-sm font-medium text-link uppercase tracking-wide mb-3">

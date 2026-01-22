@@ -18,16 +18,16 @@ export function Header() {
               Features
             </a>
             <a
-              href="#pricing"
+              href="#why-choose"
               className="text-sm font-medium text-primary hover:text-link transition-colors"
             >
-              Pricing
+              Why Us
             </a>
             <a
-              href="#about"
+              href="#faq"
               className="text-sm font-medium text-primary hover:text-link transition-colors"
             >
-              About
+              FAQ
             </a>
           </nav>
 

@@ -5,6 +5,7 @@ import { FAQ } from "@/components/FAQ";
 import { FeatureShowcase } from "@/components/FeatureShowcase";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { Integrations } from "@/components/Integrations";
 import { PromptDemo } from "@/components/PromptDemo";
 import { WhyChoose } from "@/components/WhyChoose";
 
@@ -16,11 +17,10 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-page text-primary">
+    <div className="min-h-screen text-primary">
       <Header />
-
       {/* Hero Section */}
-      <section className="min-h-[calc(100vh-4rem)] flex flex-col px-4 py-20 pb-5">
+      <section className="min-h-[calc(100vh-4rem)] flex flex-col px-4 py-20 pb-5 bg-surface bg-gradient-to-b from-white to-page">
         <div className="mx-auto max-w-7xl w-full flex-1 flex flex-col justify-center">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             {/* Left side - Text and CTA */}
@@ -58,6 +58,8 @@ export default function HomePage() {
       <FeatureShowcase />
 
       <WhyChoose />
+
+      <Integrations />
 
       <FAQ />
 

@@ -31,6 +31,7 @@ const FONT_SETTINGS: FontSetting[] = [
     cssVar: "--font-heading",
     options: [
       { label: "Sentient", value: '"Sentient", Georgia, "Times New Roman", serif' },
+      { label: "Halyard Display", value: '"halyard-display", system-ui, sans-serif' },
       { label: "Georgia", value: 'Georgia, "Times New Roman", serif' },
       { label: "Inter", value: '"Inter", system-ui, sans-serif' },
       { label: "System UI", value: 'system-ui, -apple-system, sans-serif' },
