@@ -144,15 +144,24 @@ export function WhyChoose() {
                       Every Student
                     </h3>
                     <div className="flex -space-x-2">
-                      <div className="w-7 h-7 rounded-full bg-blue-100 border-2 border-white flex items-center justify-center">
-                        <span className="text-xs text-blue-600 font-medium">E</span>
-                      </div>
-                      <div className="w-7 h-7 rounded-full bg-purple-100 border-2 border-white flex items-center justify-center">
-                        <span className="text-xs text-purple-600 font-medium">J</span>
-                      </div>
-                      <div className="w-7 h-7 rounded-full bg-green-100 border-2 border-white flex items-center justify-center">
-                        <span className="text-xs text-green-600 font-medium">S</span>
-                      </div>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=56&h=56&fit=crop&crop=face"
+                        alt="Emma"
+                        className="w-7 h-7 rounded-full border-2 border-white object-cover"
+                      />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=56&h=56&fit=crop&crop=face"
+                        alt="James"
+                        className="w-7 h-7 rounded-full border-2 border-white object-cover"
+                      />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=56&h=56&fit=crop&crop=face"
+                        alt="Sophie"
+                        className="w-7 h-7 rounded-full border-2 border-white object-cover"
+                      />
                     </div>
                   </div>
                   <p className="text-muted text-sm mt-1">Individual progress tracking</p>
@@ -275,22 +284,44 @@ export function WhyChoose() {
                   </div>
                   <div className="flex-1 space-y-2">
                     <div className="flex items-center gap-3 p-3 bg-page rounded-lg">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                        <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop&crop=face"
+                        alt="Emma"
+                        className="w-8 h-8 rounded-full object-cover"
+                      />
                       <span className="text-sm text-primary">Lesson summary ready for Emma</span>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-page rounded-lg">
-                      <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
-                        <svg className="w-4 h-4 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face"
+                        alt="James"
+                        className="w-8 h-8 rounded-full object-cover"
+                      />
                       <span className="text-sm text-primary">Progress milestone: James completed algebra module</span>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-page rounded-lg">
+                      <div className="flex -space-x-1">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=32&h=32&fit=crop&crop=face"
+                          alt="Student"
+                          className="w-4 h-4 rounded-full object-cover border border-white"
+                        />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face"
+                          alt="Student"
+                          className="w-4 h-4 rounded-full object-cover border border-white"
+                        />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face"
+                          alt="Student"
+                          className="w-4 h-4 rounded-full object-cover border border-white"
+                        />
+                      </div>
                       <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
                         <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />

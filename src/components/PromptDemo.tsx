@@ -485,16 +485,18 @@ export function PromptDemo() {
                 {/* Video content - two participants */}
                 <div className="absolute inset-0 flex">
                   {/* Tutor side */}
-                  <div className="flex-1 bg-gradient-to-br from-blue-900 to-blue-950 flex items-center justify-center border-r border-gray-700">
-                    <div className="text-center">
-                      <div className="w-16 h-16 rounded-full bg-blue-500 mx-auto mb-2 flex items-center justify-center">
-                        <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                        </svg>
-                      </div>
-                      <span className="text-white text-xs font-medium">Tutor</span>
+                  <div className="flex-1 relative border-r border-gray-700 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop&crop=face"
+                      alt="Tutor"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-2 left-2 right-2">
+                      <span className="text-white text-xs font-medium bg-black/40 px-2 py-0.5 rounded">Sarah (Tutor)</span>
                       {/* Speaking indicator */}
-                      <div className="flex justify-center gap-0.5 mt-2">
+                      <div className="flex gap-0.5 mt-1">
                         {currentSpeaker === "tutor" ? (
                           <>
                             <div className="w-1 h-3 bg-green-400 rounded-full animate-[pulse_0.5s_ease-in-out_infinite]" />
@@ -505,25 +507,27 @@ export function PromptDemo() {
                           </>
                         ) : (
                           <>
-                            <div className="w-1 h-1 bg-gray-500 rounded-full" />
-                            <div className="w-1 h-1 bg-gray-500 rounded-full" />
-                            <div className="w-1 h-1 bg-gray-500 rounded-full" />
-                            <div className="w-1 h-1 bg-gray-500 rounded-full" />
-                            <div className="w-1 h-1 bg-gray-500 rounded-full" />
+                            <div className="w-1 h-1 bg-gray-400 rounded-full" />
+                            <div className="w-1 h-1 bg-gray-400 rounded-full" />
+                            <div className="w-1 h-1 bg-gray-400 rounded-full" />
                           </>
                         )}
                       </div>
                     </div>
                   </div>
                   {/* Student side */}
-                  <div className="flex-1 bg-gradient-to-br from-purple-900 to-purple-950 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-16 h-16 rounded-full bg-purple-500 mx-auto mb-2 flex items-center justify-center">
-                        <span className="text-white text-xl font-semibold">E</span>
-                      </div>
-                      <span className="text-white text-xs font-medium">Emma</span>
+                  <div className="flex-1 relative overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=300&fit=crop&crop=face"
+                      alt="Student"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-2 left-2 right-2">
+                      <span className="text-white text-xs font-medium bg-black/40 px-2 py-0.5 rounded">Emma (Student)</span>
                       {/* Speaking indicator */}
-                      <div className="flex justify-center gap-0.5 mt-2">
+                      <div className="flex gap-0.5 mt-1">
                         {currentSpeaker === "student" ? (
                           <>
                             <div className="w-1 h-2 bg-green-400 rounded-full animate-[pulse_0.5s_ease-in-out_infinite]" />
@@ -534,11 +538,9 @@ export function PromptDemo() {
                           </>
                         ) : (
                           <>
-                            <div className="w-1 h-1 bg-gray-500 rounded-full" />
-                            <div className="w-1 h-1 bg-gray-500 rounded-full" />
-                            <div className="w-1 h-1 bg-gray-500 rounded-full" />
-                            <div className="w-1 h-1 bg-gray-500 rounded-full" />
-                            <div className="w-1 h-1 bg-gray-500 rounded-full" />
+                            <div className="w-1 h-1 bg-gray-400 rounded-full" />
+                            <div className="w-1 h-1 bg-gray-400 rounded-full" />
+                            <div className="w-1 h-1 bg-gray-400 rounded-full" />
                           </>
                         )}
                       </div>

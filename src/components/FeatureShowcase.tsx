@@ -23,9 +23,12 @@ function LessonSummaryPreview() {
     <MockWindow>
       <div className="space-y-4">
         <div className="flex items-center gap-3 pb-3 border-b border-default">
-          <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-            <span className="text-blue-600 font-semibold">E</span>
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&h=80&fit=crop&crop=face"
+            alt="Emma Thompson"
+            className="w-10 h-10 rounded-full object-cover"
+          />
           <div>
             <p className="font-medium text-primary text-sm">Emma Thompson</p>
             <p className="text-xs text-muted">GCSE Maths • 58 mins • Today, 3:45 PM</p>
@@ -81,9 +84,12 @@ function PerformanceInsightsPreview() {
       <div className="space-y-4">
         <div className="flex items-center justify-between pb-3 border-b border-default">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
-              <span className="text-purple-600 font-semibold">E</span>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&h=80&fit=crop&crop=face"
+              alt="Emma Thompson"
+              className="w-10 h-10 rounded-full object-cover"
+            />
             <div>
               <p className="font-medium text-primary text-sm">Emma Thompson</p>
               <p className="text-xs text-muted">12 lessons this month</p>
@@ -156,11 +162,12 @@ function TutorFeedbackPreview() {
     <MockWindow>
       <div className="space-y-4">
         <div className="flex items-center gap-3 pb-3 border-b border-default">
-          <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
-            <svg className="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0" />
-            </svg>
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face"
+            alt="Tutor"
+            className="w-10 h-10 rounded-full object-cover"
+          />
           <div>
             <p className="font-medium text-primary text-sm">Session Feedback</p>
             <p className="text-xs text-muted">Lesson with Emma • Today</p>
@@ -283,11 +290,12 @@ function AttendancePreview() {
         <div className="space-y-3">
           <div className="flex items-center justify-between p-3 bg-page rounded-lg">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-                <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop&crop=face"
+                alt="Emma Thompson"
+                className="w-8 h-8 rounded-full object-cover"
+              />
               <div>
                 <p className="text-sm font-medium text-primary">Emma Thompson</p>
                 <p className="text-xs text-muted">GCSE Maths • 3:45 PM</p>
@@ -301,11 +309,12 @@ function AttendancePreview() {
 
           <div className="flex items-center justify-between p-3 bg-page rounded-lg">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-                <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face"
+                alt="James Wilson"
+                className="w-8 h-8 rounded-full object-cover"
+              />
               <div>
                 <p className="text-sm font-medium text-primary">James Wilson</p>
                 <p className="text-xs text-muted">A-Level Physics • 5:00 PM</p>
@@ -319,11 +328,12 @@ function AttendancePreview() {
 
           <div className="flex items-center justify-between p-3 bg-page rounded-lg">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center">
-                <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop&crop=face"
+                alt="Sophie Chen"
+                className="w-8 h-8 rounded-full object-cover"
+              />
               <div>
                 <p className="text-sm font-medium text-primary">Sophie Chen</p>
                 <p className="text-xs text-muted">GCSE English • 6:30 PM</p>

@@ -51,10 +51,55 @@ export function CTASection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          className="mb-8"
         >
           <Button href="/early-access" size="large">
             Request Early Access
           </Button>
+        </motion.div>
+
+        {/* Social proof - tutors already signed up */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+          className="flex flex-col items-center gap-3"
+        >
+          <div className="flex -space-x-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=64&h=64&fit=crop&crop=face"
+              alt="Tutor"
+              className="w-10 h-10 rounded-full border-2 border-white object-cover"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face"
+              alt="Tutor"
+              className="w-10 h-10 rounded-full border-2 border-white object-cover"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=64&h=64&fit=crop&crop=face"
+              alt="Tutor"
+              className="w-10 h-10 rounded-full border-2 border-white object-cover"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face"
+              alt="Tutor"
+              className="w-10 h-10 rounded-full border-2 border-white object-cover"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop&crop=face"
+              alt="Tutor"
+              className="w-10 h-10 rounded-full border-2 border-white object-cover"
+            />
+          </div>
+          <p className="text-sm text-muted-dark">
+            <span className="font-medium text-primary">50+ tutoring companies</span> already on the waitlist
+          </p>
         </motion.div>
       </div>
     </section>
