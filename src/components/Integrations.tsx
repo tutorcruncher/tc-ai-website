@@ -26,7 +26,7 @@ export function Integrations() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 px-4">
+    <section ref={sectionRef} className="py-20 px-4" id="integrations">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

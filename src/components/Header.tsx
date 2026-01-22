@@ -23,6 +23,12 @@ export function Header() {
             >
               Why Us
             </a>
+             <a
+              href="#integrations"
+              className="text-sm font-medium text-primary hover:text-link transition-colors"
+            >
+              Integrations
+            </a>
             <a
               href="#faq"
               className="text-sm font-medium text-primary hover:text-link transition-colors"

@@ -382,9 +382,12 @@ export function FeatureShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
+  const isScrollingToFeature = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
+      // Don't update active index during programmatic scrolls (like anchor clicks)
+      if (isScrollingToFeature.current) return;
       if (!containerRef.current || !stickyRef.current) return;
 
       const container = containerRef.current;
@@ -413,10 +416,36 @@ export function FeatureShowcase() {
       }
     };
 
+    // Handle anchor link clicks - temporarily disable scroll tracking
+    const handleHashChange = () => {
+      isScrollingToFeature.current = true;
+      setTimeout(() => {
+        isScrollingToFeature.current = false;
+      }, 1000);
+    };
+
+    // Also intercept clicks on anchor links
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a[href^="#"]');
+      if (anchor) {
+        isScrollingToFeature.current = true;
+        setTimeout(() => {
+          isScrollingToFeature.current = false;
+        }, 1000);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("hashchange", handleHashChange);
+    document.addEventListener("click", handleClick);
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", handleHashChange);
+      document.removeEventListener("click", handleClick);
+    };
   }, [activeIndex]);
 
   return (
@@ -451,6 +480,7 @@ export function FeatureShowcase() {
         onClick={() => {
           setActiveIndex(index);
           if (containerRef.current) {
+            isScrollingToFeature.current = true;
             const container = containerRef.current;
             const stickyHeight = stickyRef.current?.offsetHeight || 0;
             const scrollableHeight = container.offsetHeight - stickyHeight;
@@ -458,6 +488,10 @@ export function FeatureShowcase() {
             const targetScroll =
               container.offsetTop + segmentHeight * index + segmentHeight / 2;
             window.scrollTo({ top: targetScroll, behavior: "smooth" });
+            // Reset flag after scroll animation completes
+            setTimeout(() => {
+              isScrollingToFeature.current = false;
+            }, 1000);
           }
         }}
         className="w-full text-left py-2"

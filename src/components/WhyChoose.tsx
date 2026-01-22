@@ -54,7 +54,7 @@ export function WhyChoose() {
   const isVisible = (index: number) => visibleItems.has(index);
 
   return (
-    <section id="why-choose" className="px-4 scroll-mt-16">
+    <section id="why-choose" className="px-4">
       <div
         ref={containerRef}
         className="relative"

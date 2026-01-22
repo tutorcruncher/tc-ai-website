@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Integrations } from "@/components/Integrations";
+import { Security } from "@/components/Security";
 import { WhyChoose } from "@/components/WhyChoose";
 
 export const metadata: Metadata = {
@@ -25,6 +26,8 @@ export default function HomePage() {
       <WhyChoose />
 
       <Integrations />
+
+      <Security />
 
       <FAQ />
 
