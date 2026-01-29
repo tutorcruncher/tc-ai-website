@@ -98,7 +98,7 @@ export function WhyChoose() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-center text-muted-dark mb-12 max-w-2xl mx-auto"
             >
-              Purpose-built for tutoring companies who want to deliver exceptional results.
+              Working with the leaders in tutoring and education for more than 10 years
             </motion.p>
 
             {/* Bento Grid */}

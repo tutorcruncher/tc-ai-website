@@ -551,7 +551,7 @@ export function FeatureShowcase() {
                 Platform Features
               </p>
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
-                Everything you need to transform tutoring
+                Everything you need to personalise learning and save time
               </h2>
               <p className="text-muted-dark max-w-2xl mx-auto">
                 Powerful AI tools that work together to give you complete visibility into every

@@ -36,7 +36,7 @@ export function CTASection() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4"
         >
-          Be first to transform your tutoring business
+          Use the power of AI to transform how you teach
         </motion.h2>
 
         <motion.p

@@ -18,8 +18,7 @@ export function Hero() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="font-heading text-4xl md:text-5xl lg:text-6xld mb-6 leading-tight"
             >
-              The <span className="text-link font-bold">AI insights</span> you&apos;ll wish you had
-              for every lesson.
+              AI tools for tutors to support personalised learning for every student
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -27,9 +26,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
               className="text-lg md:text-xl text-muted-dark max-w-2xl mx-auto lg:mx-0 mb-6"
             >
-              TutorCruncher AI transforms every lesson into actionable insights—tracking student
-              progress, highlighting strengths, and surfacing areas for improvement without any
-              extra work from your tutors.
+              Supporting human tutors and educators with AI tools to track student progress, automatically generate lesson plans and reports, discover areas for improvement and more.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
