@@ -12,25 +12,19 @@ export function Header() {
 
           <nav className="hidden md:flex items-center gap-8">
             <a
-              href="#features"
+              href="/features"
               className="text-sm font-medium text-primary hover:text-link transition-colors"
             >
               Features
             </a>
             <a
-              href="#why-choose"
+              href="/blog"
               className="text-sm font-medium text-primary hover:text-link transition-colors"
             >
-              Why Us
+              Blog
             </a>
             <a
-              href="#integrations"
-              className="text-sm font-medium text-primary hover:text-link transition-colors"
-            >
-              Integrations
-            </a>
-            <a
-              href="#faq"
+              href="/faq"
               className="text-sm font-medium text-primary hover:text-link transition-colors"
             >
               FAQ

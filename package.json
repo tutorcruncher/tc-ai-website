@@ -16,6 +16,9 @@
   },
   "dependencies": {
     "@next/third-parties": "^14.2.7",
+    "@prismicio/client": "^7.21.5",
+    "@prismicio/next": "^2.2.1",
+    "@prismicio/react": "^3.3.0",
     "clsx": "^2.0.0",
     "framer-motion": "^12.28.1",
     "next": "^14.0.1",
@@ -26,6 +29,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
+    "@slicemachine/adapter-next": "^0.3.95",
     "@tailwindcss/postcss": "^4.1.16",
     "@types/node": "24.9.2",
     "@types/react": "18.2.33",
@@ -42,6 +46,7 @@
     "npm": "^10.5.2",
     "postcss": "^8.4.31",
     "prettier": "^3.3.3",
+    "slice-machine-ui": "^2.21.1",
     "tailwindcss": "^4.1.16",
     "typescript": "5.5.4",
     "typescript-eslint": "^8.17.0"

@@ -103,7 +103,7 @@ function FAQItemComponent({ item, index }: { item: FAQItem; index: number }) {
   );
 }
 
-export function FAQ() {
+export function FAQ({ hideHeading = false }: { hideHeading?: boolean }) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const [headerVisible, setHeaderVisible] = useState(false);
 
@@ -128,15 +128,17 @@ export function FAQ() {
   return (
     <section id="faq" className="py-20 px-4 scroll-mt-16">
       <div className="mx-auto max-w-3xl">
-        <motion.h2
-          ref={headerRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="font-heading text-3xl md:text-4xl font-bold text-primary text-center mb-12"
-        >
-          Frequently Asked Questions
-        </motion.h2>
+        {!hideHeading && (
+          <motion.h2
+            ref={headerRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="font-heading text-3xl md:text-4xl font-bold text-primary text-center mb-12"
+          >
+            Frequently Asked Questions
+          </motion.h2>
+        )}
         <div className="space-y-6">
           {FAQ_ITEMS.map((item, index) => (
             <FAQItemComponent key={index} item={item} index={index} />
