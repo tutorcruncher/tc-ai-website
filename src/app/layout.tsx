@@ -1,8 +1,11 @@
 import "./globals.css";
 
+import { PrismicPreview } from "@prismicio/next";
 import { Inter } from "next/font/google";
+import { repositoryName } from "prismicio";
 
 import { SettingsProvider } from "@/components/SettingsProvider";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +24,7 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
         <SettingsProvider>
           <main>{children}</main>
         </SettingsProvider>
+        <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
   );

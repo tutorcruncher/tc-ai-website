@@ -67,13 +67,7 @@
               "type": "Select",
               "config": {
                 "label": "Icon",
-                "options": [
-                  "document",
-                  "chart",
-                  "academic",
-                  "pie-chart",
-                  "check-circle"
-                ],
+                "options": ["document", "chart", "academic", "pie-chart", "check-circle"],
                 "default_value": "document"
               }
             }

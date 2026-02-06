@@ -169,11 +169,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 },
                 image: ({ node }) => (
                   <figure className="my-8">
-                    <img
-                      src={node.url}
-                      alt={node.alt ?? ""}
-                      className="rounded-xl w-full"
-                    />
+                    <img src={node.url} alt={node.alt ?? ""} className="rounded-xl w-full" />
                     {node.alt && (
                       <figcaption className="text-sm text-muted-dark text-center mt-3">
                         {node.alt}

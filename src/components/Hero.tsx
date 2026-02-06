@@ -26,7 +26,9 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
               className="text-lg md:text-xl text-muted-dark max-w-2xl mx-auto lg:mx-0 mb-6"
             >
-              Supporting human tutors and educators with AI tools to track student progress, automatically generate lesson plans and reports, discover areas for improvement and more.
+              Supporting human tutors and educators with AI tools to track student progress,
+              automatically generate lesson plans and reports, discover areas for improvement and
+              more.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

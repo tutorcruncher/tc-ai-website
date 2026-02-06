@@ -80,7 +80,10 @@ export default async function BlogPage() {
       {/* Featured post */}
       <section className="px-4 pb-16">
         <div className="mx-auto max-w-7xl">
-          <Link href={featuredPost.url || `/blog/${featuredPost.uid}`} className="group block no-underline">
+          <Link
+            href={featuredPost.url || `/blog/${featuredPost.uid}`}
+            className="group block no-underline"
+          >
             <div className="grid md:grid-cols-2 gap-8 bg-white rounded-2xl border border-default overflow-hidden">
               <div className="aspect-[16/10] md:aspect-auto overflow-hidden">
                 <PrismicImage

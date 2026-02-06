@@ -19,8 +19,7 @@ export default async function FeaturesPage() {
   let page = null;
   try {
     page = await client.getSingle("features_page");
-  } catch {
-  }
+  } catch {}
 
   return (
     <div className="min-h-screen text-primary">
