@@ -553,7 +553,7 @@ export function PromptDemo() {
                   <div className="flex-1 relative border-r border-gray-700 overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="https://images.unsplash.com/photo-1664382953518-4a664ab8a8c9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      src="/images/tutor-sarah.jpg"
                       alt="Tutor"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
@@ -586,7 +586,7 @@ export function PromptDemo() {
                   <div className="flex-1 relative overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="https://images.unsplash.com/photo-1534643960519-11ad79bc19df?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      src="/images/student-emma-lg.jpg"
                       alt="Student"
                       className="absolute inset-0 w-full h-full object-cover"
                     />

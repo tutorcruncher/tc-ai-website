@@ -3,19 +3,10 @@ export function Footer() {
     <footer className="py-6 px-4 bg-white border border-t">
       <div className="mx-auto max-w-7xl flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-dark">
         <div className="flex gap-6">
-          <a href="/features" className="hover:text-primary transition-colors">
-            Features
-          </a>
-          <a href="/blog" className="hover:text-primary transition-colors">
-            Blog
-          </a>
-          <a href="/faq" className="hover:text-primary transition-colors">
-            FAQ
-          </a>
-          <a href="/privacy" className="hover:text-primary transition-colors">
+          <a href="https://tutorcruncher.com/privacy" className="hover:text-primary transition-colors" target="_blank">
             Privacy Policy
           </a>
-          <a href="/terms" className="hover:text-primary transition-colors">
+          <a href="https://tutorcruncher.com/tcai-privacy-policy" className="hover:text-primary transition-colors" target="_blank">
             Terms of Service
           </a>
         </div>

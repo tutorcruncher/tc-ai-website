@@ -13,10 +13,7 @@ export const repositoryName = process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || sm.
  *
  * {@link https://prismic.io/docs/route-resolver#route-resolver}
  */
-const routes: Route[] = [
-  { type: "blog_post", path: "/blog/:uid" },
-  { type: "features_page", path: "/features" },
-];
+const routes: Route[] = [];
 
 /**
  * Creates a Prismic client for the project's repository. The client is used to

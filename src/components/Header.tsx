@@ -10,26 +10,6 @@ export function Header() {
             <Logo className="h-8 w-auto text-primary" />
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
-            <a
-              href="/features"
-              className="text-sm font-medium text-primary hover:text-link transition-colors"
-            >
-              Features
-            </a>
-            <a
-              href="/blog"
-              className="text-sm font-medium text-primary hover:text-link transition-colors"
-            >
-              Blog
-            </a>
-            <a
-              href="/faq"
-              className="text-sm font-medium text-primary hover:text-link transition-colors"
-            >
-              FAQ
-            </a>
-          </nav>
 
           <div className="flex items-center gap-4">
             <Button href="https://forms.gle/uunftAqJqn2ZFQzFA" size="small">

@@ -25,7 +25,7 @@ function LessonSummaryPreview() {
         <div className="flex items-center gap-3 pb-3 border-b border-default">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&h=80&fit=crop&crop=face"
+            src="/images/avatar-emma.jpg"
             alt="Emma Thompson"
             className="w-10 h-10 rounded-full object-cover"
           />
@@ -95,7 +95,7 @@ function PerformanceInsightsPreview() {
           <div className="flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&h=80&fit=crop&crop=face"
+              src="/images/avatar-emma.jpg"
               alt="Emma Thompson"
               className="w-10 h-10 rounded-full object-cover"
             />
@@ -104,25 +104,15 @@ function PerformanceInsightsPreview() {
               <p className="text-xs text-muted">12 lessons this month</p>
             </div>
           </div>
-          <div className="text-right">
-            <p className="text-2xl font-bold text-primary">87%</p>
-            <p className="text-xs text-green-600">+12% this month</p>
-          </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
-          <div className="text-center p-3 bg-blue-50 rounded-lg">
-            <p className="text-xl font-bold text-blue-600">92%</p>
-            <p className="text-xs text-muted">Engagement</p>
-          </div>
-          <div className="text-center p-3 bg-green-50 rounded-lg">
-            <p className="text-xl font-bold text-green-600">85%</p>
-            <p className="text-xs text-muted">Comprehension</p>
-          </div>
-          <div className="text-center p-3 bg-purple-50 rounded-lg">
-            <p className="text-xl font-bold text-purple-600">15/15</p>
-            <p className="text-xs text-muted">Problems</p>
-          </div>
+        <div className="p-3 bg-page rounded-lg">
+          <p className="text-xs font-medium text-muted uppercase tracking-wide mb-2">
+            Overall Progress
+          </p>
+          <p className="text-sm text-primary leading-relaxed">
+            Emma is making strong progress across all topics. Engagement has been consistently high and comprehension is improving steadily.
+          </p>
         </div>
 
         <div>
@@ -193,7 +183,7 @@ function PerformanceInsightsPreview() {
   );
 }
 
-// Feature 3: Tutor Feedback & Coaching
+// Feature 3: Tutor Feedback
 function TutorFeedbackPreview() {
   return (
     <MockWindow>
@@ -201,7 +191,7 @@ function TutorFeedbackPreview() {
         <div className="flex items-center gap-3 pb-3 border-b border-default">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face"
+            src="/images/tutor-feedback.jpg"
             alt="Tutor"
             className="w-10 h-10 rounded-full object-cover"
           />
@@ -247,23 +237,11 @@ function TutorFeedbackPreview() {
           </ul>
         </div>
 
-        <div className="flex items-center justify-between p-3 bg-page rounded-lg">
-          <div>
-            <p className="text-xs text-muted">Teaching Score</p>
-            <p className="text-lg font-bold text-primary">8.5/10</p>
-          </div>
-          <div className="flex gap-1">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <svg
-                key={i}
-                className={`w-5 h-5 ${i <= 4 ? "text-yellow-400" : "text-gray-200"}`}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
+        <div className="flex items-center gap-3 p-3 bg-page rounded-lg">
+          <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p className="text-sm text-primary">Feedback generated for this session</p>
         </div>
       </div>
     </MockWindow>
@@ -299,37 +277,42 @@ function ParentReportPreview() {
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-          <div className="p-3 bg-page rounded-lg text-center">
-            <p className="text-2xl font-bold text-primary">12</p>
+          <div className="p-3 bg-page rounded-lg">
             <p className="text-xs text-muted">Lessons</p>
+            <p className="text-lg font-bold text-primary">12</p>
           </div>
-          <div className="p-3 bg-page rounded-lg text-center">
-            <p className="text-2xl font-bold text-green-600">+18%</p>
-            <p className="text-xs text-muted">Improvement</p>
-          </div>
-        </div>
-
-        <div>
-          <p className="text-xs font-medium text-muted uppercase tracking-wide mb-2">
-            Monthly Progress
-          </p>
-          <div className="h-20 flex items-end gap-1">
-            {[65, 70, 72, 68, 75, 78, 82, 80, 85, 87, 88, 90].map((h, i) => (
-              <div key={i} className="flex-1 bg-blue-500 rounded-t" style={{ height: `${h}%` }} />
-            ))}
-          </div>
-          <div className="flex justify-between mt-1 text-xs text-muted">
-            <span>Jan</span>
-            <span>Dec</span>
+          <div className="p-3 bg-page rounded-lg">
+            <p className="text-xs text-muted">Topics Covered</p>
+            <p className="text-lg font-bold text-primary">8</p>
           </div>
         </div>
 
         <div className="p-3 bg-page rounded-lg">
           <p className="text-xs font-medium text-muted uppercase tracking-wide mb-2">Summary</p>
           <p className="text-sm text-primary leading-relaxed">
-            Emma has made excellent progress this month, particularly in algebra. She consistently
-            engages well in lessons and shows strong problem-solving skills.
+            Emma has made excellent progress this month, particularly in algebra. She is gaining
+            confidence with factorisation and is ready to move on to more complex equations.
           </p>
+        </div>
+
+        <div>
+          <p className="text-xs font-medium text-muted uppercase tracking-wide mb-2">
+            Key Observations
+          </p>
+          <ul className="space-y-2 text-sm text-primary">
+            <li className="flex items-start gap-2">
+              <span className="mt-1 text-muted">•</span>
+              <span>Engages well and asks thoughtful questions</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1 text-muted">•</span>
+              <span>Would benefit from more practice with word problems</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1 text-muted">•</span>
+              <span>Strong independent problem-solving improving each week</span>
+            </li>
+          </ul>
         </div>
       </div>
     </MockWindow>
@@ -351,7 +334,7 @@ function AttendancePreview() {
             <div className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop&crop=face"
+                src="/images/avatar-emma.jpg"
                 alt="Emma Thompson"
                 className="w-8 h-8 rounded-full object-cover"
               />
@@ -370,7 +353,7 @@ function AttendancePreview() {
             <div className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face"
+                src="/images/avatar-james.jpg"
                 alt="James Wilson"
                 className="w-8 h-8 rounded-full object-cover"
               />
@@ -389,7 +372,7 @@ function AttendancePreview() {
             <div className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop&crop=face"
+                src="/images/avatar-sophie.jpg"
                 alt="Sophie Chen"
                 className="w-8 h-8 rounded-full object-cover"
               />
@@ -405,9 +388,11 @@ function AttendancePreview() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200">
-          <span className="text-sm text-green-700">Attendance rate this week</span>
-          <span className="text-lg font-bold text-green-700">96%</span>
+        <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
+          <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span className="text-sm text-green-700">All students accounted for this week</span>
         </div>
       </div>
     </MockWindow>
@@ -428,7 +413,7 @@ const FEATURES: Feature[] = [
     preview: <PerformanceInsightsPreview />,
   },
   {
-    title: "Tutor Feedback & Coaching",
+    title: "Tutor Feedback",
     description:
       "Tutors receive personalised feedback on their teaching after each session. Understand what's working, get actionable suggestions, and improve continuously—without manual observations.",
     preview: <TutorFeedbackPreview />,

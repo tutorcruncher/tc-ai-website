@@ -12,47 +12,27 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     question: "What is TutorCruncher AI?",
     answer:
-      "TutorCruncher AI is an AI-powered tutoring platform that provides real-time lesson analysis, personalised learning paths, and comprehensive reporting to help tutors deliver better educational outcomes.",
+      "TutorCruncher AI is an intelligent tutoring management platform that helps tutoring businesses track lessons, monitor student progress, and generate actionable insights — all powered by AI. It streamlines the administrative side of tutoring so tutors and agencies can focus on teaching.",
   },
   {
-    question: "How does the AI analyse lessons?",
+    question: "How does the AI work during lessons?",
     answer:
-      "Our AI monitors engagement levels, tracks comprehension through interactive assessments, and identifies patterns in student responses to provide actionable insights for tutors.",
+      "Our AI takes transcribes from tutoring sessions, then generates structured lesson insights — including topics covered, student engagement, and areas for improvement. This eliminates manual note-taking and gives parents and administrators a clear picture of every session.",
   },
   {
-    question: "Is my data secure?",
+    question: "Who is TutorCruncher AI designed for?",
     answer:
-      "Yes, we take data security seriously. All data is encrypted in transit and at rest, and we comply with GDPR and other relevant data protection regulations.",
+      "It's built for tutoring agencies, independent tutors, and education businesses of any size. Whether you manage a handful of students or hundreds of tutor-student relationships.",
   },
   {
-    question: "When will TutorCruncher AI be available?",
+    question: "How are progress reports generated?",
     answer:
-      "We're currently in early access. Join our waitlist to be among the first to try TutorCruncher AI when it launches.",
+      "Reports are generated automatically based on aggregated lesson data over a chosen time period. The AI synthesises session insights, attendance, and tutor feedback into professional, shareable reports — saving hours of manual report writing each term.",
   },
   {
-    question: "Lorem ipsum dolor sit amet?",
+    question: "Is my data secure and private?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-  },
-  {
-    question: "Ut enim ad minim veniam quis nostrud?",
-    answer:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    question: "Excepteur sint occaecat cupidatat?",
-    answer:
-      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-  },
-  {
-    question: "Nemo enim ipsam voluptatem quia voluptas?",
-    answer:
-      "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
-  },
-  {
-    question: "Quis autem vel eum iure reprehenderit?",
-    answer:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+      "Absolutely. All lesson recordings, transcripts, and student data are encrypted and stored securely. We follow strict data protection standards and never share your data with third parties. You retain full ownership of all content generated on the platform.",
   },
 ];
 
@@ -103,7 +83,7 @@ function FAQItemComponent({ item, index }: { item: FAQItem; index: number }) {
   );
 }
 
-export function FAQ({ hideHeading = false }: { hideHeading?: boolean }) {
+export function FAQ() {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const [headerVisible, setHeaderVisible] = useState(false);
 
@@ -128,17 +108,15 @@ export function FAQ({ hideHeading = false }: { hideHeading?: boolean }) {
   return (
     <section id="faq" className="py-20 px-4 scroll-mt-16">
       <div className="mx-auto max-w-3xl">
-        {!hideHeading && (
-          <motion.h2
-            ref={headerRef}
-            initial={{ opacity: 0, y: 30 }}
-            animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="font-heading text-3xl md:text-4xl font-bold text-primary text-center mb-12"
-          >
-            Frequently Asked Questions
-          </motion.h2>
-        )}
+        <motion.h2
+          ref={headerRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="font-heading text-3xl md:text-4xl font-bold text-primary text-center mb-12"
+        >
+          Frequently Asked Questions
+        </motion.h2>
         <div className="space-y-6">
           {FAQ_ITEMS.map((item, index) => (
             <FAQItemComponent key={index} item={item} index={index} />

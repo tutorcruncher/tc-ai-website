@@ -34,12 +34,12 @@ export function Integrations() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12"
         >
-          <p className="text-sm font-medium text-link uppercase tracking-wide mb-3">Integrations</p>
+          <p className="text-sm font-medium text-link uppercase tracking-wide mb-3">Virtual Classroom</p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
-            Works with the tools you already use
+            Everything in one place
           </h2>
           <p className="text-muted-dark max-w-2xl mx-auto">
-            TutorCruncher AI integrates seamlessly with your existing workflow.
+            A built-in virtual classroom with AI analysis, so every lesson is captured automatically.
           </p>
         </motion.div>
 
@@ -164,7 +164,7 @@ export function Integrations() {
                       <div className="flex-1 bg-gray-100 rounded-lg overflow-hidden relative">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src="https://images.unsplash.com/photo-1664382953518-4a664ab8a8c9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                          src="/images/tutor-sarah.jpg"
                           alt="Tutor"
                           className="absolute inset-0 w-full h-full object-cover"
                         />
@@ -177,7 +177,7 @@ export function Integrations() {
                       <div className="flex-1 bg-gray-100 rounded-lg overflow-hidden relative">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src="https://images.unsplash.com/photo-1534643960519-11ad79bc19df?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                          src="/images/student-emma-lg.jpg"
                           alt="Student"
                           className="absolute inset-0 w-full h-full object-cover"
                         />

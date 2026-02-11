@@ -6,7 +6,6 @@ import { repositoryName } from "prismicio";
 
 import { SettingsProvider } from "@/components/SettingsProvider";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function LandingLayout({ children }: { children: React.ReactNode }) {

@@ -116,7 +116,7 @@ export function WhyChoose() {
                   <div className="md:w-2/5 h-48 md:h-auto relative">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="https://plus.unsplash.com/premium_photo-1661714188599-e132395b5bf8?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      src="/images/tutors-collaborating.jpg"
                       alt="Tutors collaborating"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
@@ -195,19 +195,19 @@ export function WhyChoose() {
                     <div className="flex -space-x-2">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src="https://images.unsplash.com/photo-1664382953518-4a664ab8a8c9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        src="/images/tutor-sarah.jpg"
                         alt="Emma"
                         className="w-7 h-7 rounded-full border-2 border-white object-cover"
                       />
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=56&h=56&fit=crop&crop=face"
+                        src="/images/avatar-james.jpg"
                         alt="James"
                         className="w-7 h-7 rounded-full border-2 border-white object-cover"
                       />
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=56&h=56&fit=crop&crop=face"
+                        src="/images/avatar-sophie.jpg"
                         alt="Sophie"
                         className="w-7 h-7 rounded-full border-2 border-white object-cover"
                       />
@@ -244,32 +244,23 @@ export function WhyChoose() {
                 className="bg-white rounded-2xl border border-default p-6"
               >
                 <h3 className="font-heading text-xl font-semibold text-primary mb-2">
-                  Tutor Coaching
+                  Tutor Feedback
                 </h3>
                 <p className="text-muted-dark text-sm mb-4">
                   Personalised feedback helps tutors improve with every lesson.
                 </p>
-                <div className="flex items-center gap-4 p-4 bg-page rounded-xl">
-                  <div className="text-center">
-                    <p className="text-2xl font-bold text-primary">8.5</p>
-                    <p className="text-xs text-muted">Teaching Score</p>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3 p-3 bg-page rounded-lg">
+                    <svg className="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-primary">Great use of real-world examples</span>
                   </div>
-                  <div className="flex-1 space-y-2">
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-green-500 rounded-full"
-                          style={{ width: "92%" }}
-                        />
-                      </div>
-                      <span className="text-xs text-muted w-16">Clarity</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div className="h-full bg-blue-500 rounded-full" style={{ width: "85%" }} />
-                      </div>
-                      <span className="text-xs text-muted w-16">Engagement</span>
-                    </div>
+                  <div className="flex items-center gap-3 p-3 bg-page rounded-lg">
+                    <svg className="w-4 h-4 text-blue-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                    </svg>
+                    <span className="text-sm text-primary">Try allowing more think-time after questions</span>
                   </div>
                 </div>
               </motion.div>
@@ -301,19 +292,11 @@ export function WhyChoose() {
                 <p className="text-muted-dark text-sm mb-4">
                   Professional reports showing real progress.
                 </p>
-                <div className="flex items-end gap-1 h-16">
-                  {[40, 45, 42, 55, 60, 58, 70, 75, 80, 85, 88, 92].map((h, i) => (
-                    <div
-                      key={i}
-                      className="flex-1 bg-blue-500 rounded-t"
-                      style={{ height: `${h}%` }}
-                    />
-                  ))}
-                </div>
-                <div className="flex justify-between mt-2 text-xs text-muted">
-                  <span>Jan</span>
-                  <span className="text-green-600 font-medium">+18%</span>
-                  <span>Dec</span>
+                <div className="p-3 bg-page rounded-lg">
+                  <p className="text-sm text-primary leading-relaxed">
+                    &ldquo;Emma has made excellent progress in algebra this month&hellip;&rdquo;
+                  </p>
+                  <p className="text-xs text-muted mt-2">Auto-generated summary</p>
                 </div>
               </motion.div>
 
@@ -338,7 +321,7 @@ export function WhyChoose() {
                     <div className="flex items-center gap-3 p-3 bg-page rounded-lg">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop&crop=face"
+                        src="/images/avatar-emma.jpg"
                         alt="Emma"
                         className="w-8 h-8 rounded-full object-cover"
                       />
@@ -347,7 +330,7 @@ export function WhyChoose() {
                     <div className="flex items-center gap-3 p-3 bg-page rounded-lg">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face"
+                        src="/images/avatar-james.jpg"
                         alt="James"
                         className="w-8 h-8 rounded-full object-cover"
                       />
@@ -359,19 +342,19 @@ export function WhyChoose() {
                       <div className="flex -space-x-1">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=32&h=32&fit=crop&crop=face"
+                          src="/images/avatar-emma.jpg"
                           alt="Student"
                           className="w-4 h-4 rounded-full object-cover border border-white"
                         />
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face"
+                          src="/images/avatar-james.jpg"
                           alt="Student"
                           className="w-4 h-4 rounded-full object-cover border border-white"
                         />
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face"
+                          src="/images/avatar-sophie.jpg"
                           alt="Student"
                           className="w-4 h-4 rounded-full object-cover border border-white"
                         />
