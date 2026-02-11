@@ -34,10 +34,23 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="space-y-3"
             >
               <Button href="https://forms.gle/uunftAqJqn2ZFQzFA" className="mx-auto lg:mx-0">
                 Join Early Access
               </Button>
+              <p className="text-sm text-muted text-center lg:text-left">
+                From the team behind{" "}
+                <a
+                  href="https://tutorcruncher.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link hover:underline"
+                >
+                  TutorCruncher
+                </a>
+                , trusted by tutoring companies worldwide.
+              </p>
             </motion.div>
           </div>
           {/* Right side - Animation */}
@@ -51,23 +64,6 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-        className="text-center mt-6 text-sm text-muted"
-      >
-        From the team behind{" "}
-        <a
-          href="https://tutorcruncher.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-link hover:underline"
-        >
-          TutorCruncher
-        </a>
-        , trusted by tutoring companies worldwide.
-      </motion.p>
     </section>
   );
 }

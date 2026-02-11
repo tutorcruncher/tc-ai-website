@@ -31,7 +31,7 @@ function LessonSummaryPreview() {
           />
           <div>
             <p className="font-medium text-primary text-sm">Emma Thompson</p>
-            <p className="text-xs text-muted">GCSE Maths • 58 mins • Today, 3:45 PM</p>
+            <p className="text-xs text-muted">GCSE Maths • 60 mins • Today, 3:45 PM</p>
           </div>
         </div>
 
@@ -86,104 +86,7 @@ function LessonSummaryPreview() {
   );
 }
 
-// Feature 2: Student Performance Insights
-function PerformanceInsightsPreview() {
-  return (
-    <MockWindow>
-      <div className="space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-default">
-          <div className="flex items-center gap-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/avatar-emma.jpg"
-              alt="Emma Thompson"
-              className="w-10 h-10 rounded-full object-cover"
-            />
-            <div>
-              <p className="font-medium text-primary text-sm">Emma Thompson</p>
-              <p className="text-xs text-muted">12 lessons this month</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="p-3 bg-page rounded-lg">
-          <p className="text-xs font-medium text-muted uppercase tracking-wide mb-2">
-            Overall Progress
-          </p>
-          <p className="text-sm text-primary leading-relaxed">
-            Emma is making strong progress across all topics. Engagement has been consistently high and comprehension is improving steadily.
-          </p>
-        </div>
-
-        <div>
-          <p className="text-xs font-medium text-muted uppercase tracking-wide mb-2">
-            Key Strengths
-          </p>
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-green-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              <span className="text-sm text-primary">Excellent grasp of factorisation</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-green-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              <span className="text-sm text-primary">Quick to apply formulas</span>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <p className="text-xs font-medium text-muted uppercase tracking-wide mb-2">
-            Areas for Improvement
-          </p>
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-orange-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-              <span className="text-sm text-primary">Practice with negative coefficients</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-orange-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-              <span className="text-sm text-primary">Word problem interpretation</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </MockWindow>
-  );
-}
-
-// Feature 3: Tutor Feedback
+// Feature 2: Tutor Feedback
 function TutorFeedbackPreview() {
   return (
     <MockWindow>
@@ -205,19 +108,10 @@ function TutorFeedbackPreview() {
           <p className="text-xs font-medium text-green-800 uppercase tracking-wide mb-2">
             What Worked Well
           </p>
-          <ul className="space-y-1 text-sm text-green-700">
-            <li className="flex items-start gap-2">
-              <span className="mt-1">•</span>
-              <span>Clear explanations with visual examples</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1">•</span>
-              <span>Good use of scaffolded questions</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1">•</span>
-              <span>Effective pace adjustments based on responses</span>
-            </li>
+          <ul className="list-disc pl-4 space-y-1 text-sm text-green-700">
+            <li>Clear explanations with visual examples</li>
+            <li>Good use of scaffolded questions</li>
+            <li>Effective pace adjustments based on responses</li>
           </ul>
         </div>
 
@@ -225,15 +119,9 @@ function TutorFeedbackPreview() {
           <p className="text-xs font-medium text-blue-800 uppercase tracking-wide mb-2">
             Suggestions
           </p>
-          <ul className="space-y-1 text-sm text-blue-700">
-            <li className="flex items-start gap-2">
-              <span className="mt-1">•</span>
-              <span>Consider more real-world examples for engagement</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1">•</span>
-              <span>Allow more think-time after questions</span>
-            </li>
+          <ul className="list-disc pl-4 space-y-1 text-sm text-blue-700">
+            <li>Consider more real-world examples for engagement</li>
+            <li>Allow more think-time after questions</li>
           </ul>
         </div>
 
@@ -258,7 +146,7 @@ function ParentReportPreview() {
             <p className="font-medium text-primary">Progress Report</p>
             <p className="text-xs text-muted">Emma Thompson • January 2025</p>
           </div>
-          <button className="flex items-center gap-2 px-3 py-1.5 bg-primary text-white text-xs rounded-lg">
+          <button className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 text-primary text-xs font-medium rounded-lg border border-default">
             <svg
               className="w-3 h-3"
               fill="none"
@@ -278,11 +166,11 @@ function ParentReportPreview() {
 
         <div className="grid grid-cols-2 gap-3">
           <div className="p-3 bg-page rounded-lg">
-            <p className="text-xs text-muted">Lessons</p>
+            <p className="text-xs font-medium text-muted uppercase tracking-wide">Lessons</p>
             <p className="text-lg font-bold text-primary">12</p>
           </div>
           <div className="p-3 bg-page rounded-lg">
-            <p className="text-xs text-muted">Topics Covered</p>
+            <p className="text-xs font-medium text-muted uppercase tracking-wide">Topics Covered</p>
             <p className="text-lg font-bold text-primary">8</p>
           </div>
         </div>
@@ -299,19 +187,10 @@ function ParentReportPreview() {
           <p className="text-xs font-medium text-muted uppercase tracking-wide mb-2">
             Key Observations
           </p>
-          <ul className="space-y-2 text-sm text-primary">
-            <li className="flex items-start gap-2">
-              <span className="mt-1 text-muted">•</span>
-              <span>Engages well and asks thoughtful questions</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 text-muted">•</span>
-              <span>Would benefit from more practice with word problems</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 text-muted">•</span>
-              <span>Strong independent problem-solving improving each week</span>
-            </li>
+          <ul className="list-disc pl-4 space-y-2 text-sm text-primary">
+            <li>Engages well and asks thoughtful questions</li>
+            <li>Would benefit from more practice with word problems</li>
+            <li>Strong independent problem-solving improving each week</li>
           </ul>
         </div>
       </div>
@@ -344,8 +223,14 @@ function AttendancePreview() {
               </div>
             </div>
             <div className="text-right">
-              <p className="text-xs font-medium text-green-600">Present</p>
-              <p className="text-xs text-muted">Joined 3:44 PM</p>
+              <div className="flex items-center gap-1.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <p className="text-xs font-medium text-green-600">Live</p>
+              </div>
+              <p className="text-xs text-muted">In session</p>
             </div>
           </div>
 
@@ -403,14 +288,8 @@ const FEATURES: Feature[] = [
   {
     title: "AI Lesson Summaries",
     description:
-      "Every recorded lesson is automatically transcribed and summarised. Get a clear overview of what was covered, key topics discussed, and timestamped chapters—without tutors writing a single note.",
+      "Every recorded lesson is automatically transcribed and summarised. Get a clear overview of what was covered, key topics discussed, and timestamped chapters — without tutors writing a single note.",
     preview: <LessonSummaryPreview />,
-  },
-  {
-    title: "Student Performance Insights",
-    description:
-      "AI analyses each student's engagement, identifies their strengths, and highlights areas for improvement. Track individual progress across every lesson, even in group sessions.",
-    preview: <PerformanceInsightsPreview />,
   },
   {
     title: "Tutor Feedback",
@@ -479,9 +358,7 @@ export function FeatureShowcase() {
           Math.max(0, Math.floor(scrollProgress / segmentHeight))
         );
 
-        if (newIndex !== activeIndex) {
-          setActiveIndex(newIndex);
-        }
+        setActiveIndex(newIndex);
       }
     };
 
@@ -515,7 +392,7 @@ export function FeatureShowcase() {
       window.removeEventListener("hashchange", handleHashChange);
       document.removeEventListener("click", handleClick);
     };
-  }, [activeIndex, isDesktop]);
+  }, [isDesktop]);
 
   return (
     <section id="features" className="px-4 scroll-mt-16">
@@ -523,7 +400,7 @@ export function FeatureShowcase() {
       <div
         ref={containerRef}
         className="relative"
-        style={isDesktop ? { height: `${100 + (FEATURES.length - 1) * 50}vh` } : undefined}
+        style={isDesktop ? { height: `${100 + (FEATURES.length - 1) * 45}vh` } : undefined}
       >
         {/* Sticky content - full viewport height, centered */}
         <div
@@ -552,11 +429,13 @@ export function FeatureShowcase() {
                     const isActive = activeIndex === index;
 
                     return (
-                      <button
+                      <div
                         key={index}
+                        role="button"
+                        tabIndex={0}
                         onClick={() => {
                           setActiveIndex(index);
-                          if (containerRef.current) {
+                          if (containerRef.current && isDesktop) {
                             isScrollingToFeature.current = true;
                             const container = containerRef.current;
                             const stickyHeight = stickyRef.current?.offsetHeight || 0;
@@ -568,10 +447,10 @@ export function FeatureShowcase() {
                             // Reset flag after scroll animation completes
                             setTimeout(() => {
                               isScrollingToFeature.current = false;
-                            }, 1000);
+                            }, 2000);
                           }
                         }}
-                        className="w-full text-left py-2"
+                        className="w-full text-left py-2 cursor-pointer"
                       >
                         <div className="flex items-start gap-3">
                           <div
@@ -607,7 +486,7 @@ export function FeatureShowcase() {
                             </AnimatePresence>
                           </div>
                         </div>
-                      </button>
+                      </div>
                     );
                   })}
                 </div>

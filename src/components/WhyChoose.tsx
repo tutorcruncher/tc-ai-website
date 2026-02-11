@@ -52,7 +52,7 @@ export function WhyChoose() {
       if (scrollProgress >= 0 && scrollProgress <= scrollableHeight) {
         // Calculate how many items should be visible based on scroll progress
         const progress = scrollProgress / scrollableHeight;
-        const itemsToShow = Math.floor(progress * (GRID_ITEMS.length + 1));
+        const itemsToShow = Math.floor(progress * (GRID_ITEMS.length + 1)) + 1;
 
         setVisibleItems((prev) => {
           const newSet = new Set(prev);
@@ -77,7 +77,7 @@ export function WhyChoose() {
       <div
         ref={containerRef}
         className="relative"
-        style={isDesktop ? { height: `${100 + GRID_ITEMS.length * 12}vh` } : undefined}
+        style={isDesktop ? { height: `${100 + GRID_ITEMS.length * 8}vh` } : undefined}
       >
         <div
           ref={stickyRef}
