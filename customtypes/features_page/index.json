@@ -1,0 +1,79 @@
+{
+  "id": "features_page",
+  "label": "Features Page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "hero_label": {
+        "type": "Text",
+        "config": {
+          "label": "Hero Label",
+          "placeholder": "e.g. Platform Features"
+        }
+      },
+      "hero_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Hero Title",
+          "single": "heading1",
+          "allowTargetBlank": false
+        }
+      },
+      "hero_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Hero Description",
+          "single": "paragraph",
+          "allowTargetBlank": false
+        }
+      },
+      "features": {
+        "type": "Group",
+        "config": {
+          "label": "Features",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title"
+              }
+            },
+            "description": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Description",
+                "single": "paragraph",
+                "allowTargetBlank": false
+              }
+            },
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Feature Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "benefits": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Benefits",
+                "multi": "list-item",
+                "allowTargetBlank": false
+              }
+            },
+            "icon": {
+              "type": "Select",
+              "config": {
+                "label": "Icon",
+                "options": ["document", "chart", "academic", "pie-chart", "check-circle"],
+                "default_value": "document"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
