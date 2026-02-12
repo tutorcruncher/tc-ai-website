@@ -7,7 +7,7 @@ import { PromptDemo } from "@/components/PromptDemo";
 
 export function Hero() {
   return (
-    <section className="min-h-[calc(100vh-4rem)] flex flex-col px-4 py-20 pb-5">
+    <section className="min-h-[calc(100vh-4rem)] flex flex-col px-4 py-12 md:py-20">
       <div className="mx-auto max-w-7xl w-full flex-1 flex flex-col justify-center">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left side - Text and CTA */}

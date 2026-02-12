@@ -160,7 +160,7 @@ export function WhyChoose() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={isVisible(1) ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="bg-white rounded-2xl border border-default p-5"
+                  className="bg-white rounded-2xl border border-default p-6"
                 >
                   <div className="flex items-center justify-between">
                     <h3 className="font-heading text-lg font-semibold text-primary">
@@ -186,7 +186,7 @@ export function WhyChoose() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={isVisible(2) ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="bg-white rounded-2xl border border-default p-5"
+                  className="bg-white rounded-2xl border border-default p-6"
                 >
                   <div className="flex items-center justify-between">
                     <h3 className="font-heading text-lg font-semibold text-primary">
@@ -219,7 +219,7 @@ export function WhyChoose() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={isVisible(3) ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="bg-white rounded-2xl border border-default p-5"
+                  className="bg-white rounded-2xl border border-default p-6"
                 >
                   <div className="flex items-center justify-between">
                     <h3 className="font-heading text-lg font-semibold text-primary">

@@ -66,7 +66,7 @@ function FAQItemComponent({ item, index }: { item: FAQItem; index: number }) {
       transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
     >
       <details className="group border-b">
-        <summary className="flex items-center justify-between p-3 cursor-pointer list-none">
+        <summary className="flex items-center justify-between py-4 px-4 cursor-pointer list-none">
           <span className="font-medium text-primary">{item.question}</span>
           <svg
             className="h-5 w-5 text-muted group-open:rotate-180 transition-transform"
@@ -77,7 +77,7 @@ function FAQItemComponent({ item, index }: { item: FAQItem; index: number }) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </summary>
-        <div className="px-3 pb-6 text-muted-dark">{item.answer}</div>
+        <div className="px-4 pb-6 text-muted-dark">{item.answer}</div>
       </details>
     </motion.div>
   );

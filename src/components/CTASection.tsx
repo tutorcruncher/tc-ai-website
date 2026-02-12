@@ -28,7 +28,7 @@ export function CTASection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-64 px-4">
+    <section ref={sectionRef} className="py-20 md:py-32 lg:py-48 px-4">
       <div className="mx-auto max-w-3xl text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
