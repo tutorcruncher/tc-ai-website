@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 interface Feature {
   title: string;
@@ -313,202 +313,93 @@ const FEATURES: Feature[] = [
 
 export function FeatureShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const stickyRef = useRef<HTMLDivElement>(null);
-  const isScrollingToFeature = useRef(false);
-
-  // Check if we're on desktop (lg breakpoint = 1024px)
-  useEffect(() => {
-    const checkDesktop = () => {
-      setIsDesktop(window.innerWidth >= 1024);
-    };
-
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
-    return () => window.removeEventListener("resize", checkDesktop);
-  }, []);
-
-  useEffect(() => {
-    // Only enable scroll-based feature switching on desktop
-    if (!isDesktop) return;
-
-    const handleScroll = () => {
-      // Don't update active index during programmatic scrolls (like anchor clicks)
-      if (isScrollingToFeature.current) return;
-      if (!containerRef.current || !stickyRef.current) return;
-
-      const container = containerRef.current;
-      const containerRect = container.getBoundingClientRect();
-      const stickyHeight = stickyRef.current.offsetHeight;
-
-      // The scrollable height within the container (total height minus the sticky content height)
-      const scrollableHeight = container.offsetHeight - stickyHeight;
-
-      // How far we've scrolled into the container (accounting for the sticky offset)
-      const scrollProgress = -containerRect.top;
-
-      // Calculate which feature should be active
-      const segmentHeight = scrollableHeight / FEATURES.length;
-
-      // Only update active index if we're within the scrollable area
-      if (scrollProgress >= 0 && scrollProgress <= scrollableHeight) {
-        const newIndex = Math.min(
-          FEATURES.length - 1,
-          Math.max(0, Math.floor(scrollProgress / segmentHeight))
-        );
-
-        setActiveIndex(newIndex);
-      }
-    };
-
-    // Handle anchor link clicks - temporarily disable scroll tracking
-    const handleHashChange = () => {
-      isScrollingToFeature.current = true;
-      setTimeout(() => {
-        isScrollingToFeature.current = false;
-      }, 1000);
-    };
-
-    // Also intercept clicks on anchor links
-    const handleClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a[href^="#"]');
-      if (anchor) {
-        isScrollingToFeature.current = true;
-        setTimeout(() => {
-          isScrollingToFeature.current = false;
-        }, 1000);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("hashchange", handleHashChange);
-    document.addEventListener("click", handleClick);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("hashchange", handleHashChange);
-      document.removeEventListener("click", handleClick);
-    };
-  }, [isDesktop]);
 
   return (
-    <section id="features" className="px-4 scroll-mt-16">
-      {/* Container with extra height for scroll-through (desktop only) */}
-      <div
-        ref={containerRef}
-        className="relative"
-        style={isDesktop ? { height: `${100 + (FEATURES.length - 1) * 45}vh` } : undefined}
-      >
-        {/* Sticky content - full viewport height, centered */}
-        <div
-          ref={stickyRef}
-          className="lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col lg:justify-center lg:pt-16 py-20"
-        >
-          <div className="mx-auto max-w-6xl w-full">
-            <div className="text-center mb-12">
-              <p className="text-sm font-medium text-link uppercase tracking-wide mb-3">
-                Platform Features
-              </p>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
-                Everything you need to personalise learning and save time
-              </h2>
-              <p className="text-muted-dark max-w-2xl mx-auto">
-                Powerful AI tools that work together to give you complete visibility into every
-                lesson.
-              </p>
-            </div>
+    <section id="features" className="px-4 scroll-mt-16 py-20">
+      <div className="mx-auto max-w-6xl w-full">
+        <div className="text-center mb-12">
+          <p className="text-sm font-medium text-link uppercase tracking-wide mb-3">
+            Platform Features
+          </p>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+            Everything you need to personalise learning and save time
+          </h2>
+          <p className="text-muted-dark max-w-2xl mx-auto">
+            Powerful AI tools that work together to give you complete visibility into every
+            lesson.
+          </p>
+        </div>
 
-            <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 w-full">
-              {/* Left side - Feature titles */}
-              <div className="lg:w-2/5">
-                <div className="space-y-10">
-                  {FEATURES.map((feature, index) => {
-                    const isActive = activeIndex === index;
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 w-full">
+          {/* Left side - Feature titles */}
+          <div className="lg:w-2/5">
+            <div className="space-y-6">
+              {FEATURES.map((feature, index) => {
+                const isActive = activeIndex === index;
 
-                    return (
+                return (
+                  <div
+                    key={index}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setActiveIndex(index)}
+                    className="w-full text-left py-2 cursor-pointer"
+                  >
+                    <div className="flex items-start gap-3">
                       <div
-                        key={index}
-                        role="button"
-                        tabIndex={0}
-                        onClick={() => {
-                          setActiveIndex(index);
-                          if (containerRef.current && isDesktop) {
-                            isScrollingToFeature.current = true;
-                            const container = containerRef.current;
-                            const stickyHeight = stickyRef.current?.offsetHeight || 0;
-                            const scrollableHeight = container.offsetHeight - stickyHeight;
-                            const segmentHeight = scrollableHeight / FEATURES.length;
-                            const targetScroll =
-                              container.offsetTop + segmentHeight * index + segmentHeight / 2;
-                            window.scrollTo({ top: targetScroll, behavior: "smooth" });
-                            // Reset flag after scroll animation completes
-                            setTimeout(() => {
-                              isScrollingToFeature.current = false;
-                            }, 2000);
-                          }
-                        }}
-                        className="w-full text-left py-2 cursor-pointer"
+                        className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium transition-colors mt-0.5 ${
+                          isActive ? "bg-primary text-primary" : "bg-gray-200 text-muted"
+                        }`}
                       >
-                        <div className="flex items-start gap-3">
-                          <div
-                            className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium transition-colors mt-0.5 ${
-                              isActive ? "bg-primary text-primary" : "bg-gray-200 text-muted"
-                            }`}
-                          >
-                            {index + 1}
-                          </div>
-
-                          <div className="min-w-0">
-                            <h3
-                              className={`font-heading text-lg font-semibold transition-colors ${
-                                isActive ? "text-primary" : "text-muted"
-                              }`}
-                            >
-                              {feature.title}
-                            </h3>
-
-                            <AnimatePresence initial={false}>
-                              {isActive && (
-                                <motion.p
-                                  key="desc"
-                                  initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                                  animate={{ opacity: 1, height: "auto", marginTop: 8 }}
-                                  exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                                  transition={{ duration: 0.25, ease: "easeOut" }}
-                                  className="text-sm leading-relaxed text-muted-dark overflow-hidden"
-                                >
-                                  {feature.description}
-                                </motion.p>
-                              )}
-                            </AnimatePresence>
-                          </div>
-                        </div>
+                        {index + 1}
                       </div>
-                    );
-                  })}
-                </div>
-              </div>
 
-              {/* Right side - Preview */}
-              <div className="lg:w-3/5">
-                <div className="relative">
-                  {FEATURES.map((feature, index) => (
-                    <div
-                      key={index}
-                      className={`transition-opacity duration-300 ${
-                        activeIndex === index
-                          ? "opacity-100"
-                          : "opacity-0 absolute inset-0 pointer-events-none"
-                      }`}
-                    >
-                      {feature.preview}
+                      <div className="min-w-0">
+                        <h3
+                          className={`font-heading text-lg font-semibold transition-colors ${
+                            isActive ? "text-primary" : "text-muted"
+                          }`}
+                        >
+                          {feature.title}
+                        </h3>
+
+                        <AnimatePresence initial={false}>
+                          {isActive && (
+                            <motion.p
+                              key="desc"
+                              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                              animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+                              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                              transition={{ duration: 0.25, ease: "easeOut" }}
+                              className="text-sm leading-relaxed text-muted-dark overflow-hidden"
+                            >
+                              {feature.description}
+                            </motion.p>
+                          )}
+                        </AnimatePresence>
+                      </div>
                     </div>
-                  ))}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right side - Preview */}
+          <div className="lg:w-3/5">
+            <div className="relative">
+              {FEATURES.map((feature, index) => (
+                <div
+                  key={index}
+                  className={`transition-opacity duration-300 ${
+                    activeIndex === index
+                      ? "opacity-100"
+                      : "opacity-0 absolute inset-0 pointer-events-none"
+                  }`}
+                >
+                  {feature.preview}
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

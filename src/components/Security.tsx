@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const SECURITY_POINTS = [
   {
@@ -84,34 +83,46 @@ const SECURITY_POINTS = [
 
 export function Security() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          section.classList.add("animate-in");
+          observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    observer.observe(section);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 px-4 bg-page">
+    <section ref={sectionRef} className="py-20 px-4 bg-page security-section">
+      <style jsx>{`
+        .security-section .fade-up {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        .security-section.animate-in .fade-up {
+          animation: fadeInUp 0.5s ease-out forwards;
+        }
+        .security-section.animate-in .fade-up-1 { animation-delay: 0.1s; }
+        .security-section.animate-in .fade-up-2 { animation-delay: 0.2s; }
+        .security-section.animate-in .fade-up-3 { animation-delay: 0.3s; }
+        .security-section.animate-in .fade-up-4 { animation-delay: 0.4s; }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12 fade-up">
           <p className="text-sm font-medium text-link uppercase tracking-wide mb-3">
             Security & Compliance
           </p>
@@ -122,16 +133,13 @@ export function Security() {
             Built with security and privacy at the core. We meet the highest standards for handling
             educational data.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {SECURITY_POINTS.map((point, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-6 border border-default hover:border-link/30 hover:shadow-lg transition-all duration-300"
+              className={`fade-up fade-up-${index + 1} bg-white rounded-2xl p-6 border border-default hover:border-link/30 hover:shadow-lg transition-[border-color,box-shadow] duration-300`}
             >
               <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-link mb-4">
                 {point.icon}
@@ -140,9 +148,9 @@ export function Security() {
                 {point.title}
               </h3>
               <p className="text-sm text-muted-dark leading-relaxed">{point.description}</p>
-            </motion.div>
+            </div>
           ))}
-        </div>     
+        </div>
       </div>
     </section>
   );

@@ -11,7 +11,7 @@ export function Header() {
           </a>
 
 
-          <div className="flex items-center gap-4">
+          <div className="hidden sm:flex items-center gap-4">
             <Button href="https://forms.gle/uunftAqJqn2ZFQzFA" size="small">
               Get Early Access
             </Button>
